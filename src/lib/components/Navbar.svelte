@@ -24,7 +24,7 @@
 			</svg>
 		</button>
 		<div class="flex-1 flex justify-center">
-			<img src="/logo.png" alt="Rayhar Travel" class="h-8 w-auto" />
+			<img src="/src/lib/assets/favicon.svg" alt="Rayhar Travel" class="h-10 w-auto" />
 		</div>
 		<div class="w-6"></div>
 	</div>

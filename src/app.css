@@ -69,6 +69,40 @@
 
 /* Custom CSS untuk komponen */
 @layer components {
+	/* Custom Select Dropdown Styling */
+	.select-custom {
+		@apply w-full px-3 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors appearance-none bg-white;
+		background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+		background-position: right 0.75rem center;
+		background-repeat: no-repeat;
+		background-size: 1.5em 1.5em;
+	}
+	
+	.select-custom:hover {
+		@apply border-gray-400;
+		background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23374151' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+	}
+	
+	.select-custom:focus {
+		background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23921E8D' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+	}
+	
+	/* Global select styling override */
+	select {
+		@apply appearance-none bg-white pr-10;
+		background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+		background-position: right 0.75rem center;
+		background-repeat: no-repeat;
+		background-size: 1.5em 1.5em;
+	}
+	
+	select:hover {
+		background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23374151' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+	}
+	
+	select:focus {
+		background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23921E8D' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+	}
 	.card-primary {
 		@apply bg-white rounded-2xl shadow-[0_8px_26px_rgba(16,24,40,0.05)] ring-1 ring-gray-100/70 hover:shadow-[0_18px_38px_rgba(16,24,40,0.10)] hover:ring-gray-200 transition-all duration-300 p-3 sm:p-6;
 	}
@@ -441,4 +475,107 @@
 	to {
 		transform: translateX(0);
 	}
+}
+
+/* Dropdown Animations */
+@keyframes dropdownSlideDown {
+	from {
+		opacity: 0;
+		transform: translateY(-8px) scale(0.95);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+@keyframes dropdownSlideUp {
+	from {
+		opacity: 0;
+		transform: translateY(8px) scale(0.95);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+@keyframes dropdownFadeOut {
+	from {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+	to {
+		opacity: 0;
+		transform: translateY(-4px) scale(0.98);
+	}
+}
+
+/* Dropdown Component Styles */
+.dropdown-enter {
+	animation: dropdownSlideDown 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dropdown-enter-top {
+	animation: dropdownSlideUp 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dropdown-exit {
+	animation: dropdownFadeOut 0.1s ease-in;
+}
+
+/* Enhanced Dropdown Styling */
+.dropdown-shadow {
+	box-shadow: 
+		0 20px 25px -5px rgba(0, 0, 0, 0.1),
+		0 10px 10px -5px rgba(0, 0, 0, 0.04),
+		0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-backdrop {
+	backdrop-filter: blur(8px);
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Smooth Hover Effects */
+.hover-lift {
+	transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom Scrollbar for Dropdown */
+.dropdown-scroll::-webkit-scrollbar {
+	width: 6px;
+}
+
+.dropdown-scroll::-webkit-scrollbar-track {
+	background: #f1f5f9;
+	border-radius: 3px;
+}
+
+.dropdown-scroll::-webkit-scrollbar-thumb {
+	background: #cbd5e1;
+	border-radius: 3px;
+}
+
+.dropdown-scroll::-webkit-scrollbar-thumb:hover {
+	background: #94a3b8;
+}
+
+/* Pulse Animation for Loading States */
+@keyframes pulse {
+	0%, 100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.5;
+	}
+}
+
+.pulse {
+	animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

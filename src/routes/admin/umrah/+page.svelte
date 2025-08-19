@@ -1,5 +1,6 @@
 <script>
 	import Icon from '../../../lib/icons.svelte';
+	import Dropdown from '../../../lib/components/Dropdown.svelte';
 
 	// Data Musim Umrah
 	let umrahMusims = [
@@ -125,7 +126,7 @@
 	}
 
 	function deleteMusim(id) {
-		if (confirm('Apakah Anda yakin ingin menghapus season ini? Semua kategori di dalamnya akan ikut terhapus.')) {
+		if (confirm('Adakah anda pasti ingin memadamkan musim ini? Semua kategori di dalamnya akan turut dipadamkan.')) {
 			umrahMusims = umrahMusims.filter(item => item.id !== id);
 			umrahCategories = umrahCategories.filter(item => item.seasonId !== id);
 		}
@@ -214,37 +215,43 @@
 					/>
 				</div>
 				<div>
-					<label for="branch-filter" class="block text-sm font-medium text-gray-700 mb-1">Cawangan</label>
-					<select 
-						id="branch-filter"
+					<label class="block text-sm font-medium text-gray-700 mb-1">Cawangan</label>
+					<Dropdown
+						options={[
+							{value: '', label: 'Semua Cawangan'},
+							{value: 'Kuala Lumpur', label: 'Kuala Lumpur'},
+							{value: 'Shah Alam', label: 'Shah Alam'},
+							{value: 'Kuantan', label: 'Kuantan'},
+							{value: 'Melaka', label: 'Melaka'},
+							{value: 'Bandar Baru Bangi', label: 'Bandar Baru Bangi'},
+							{value: 'Seremban', label: 'Seremban'},
+							{value: 'Batu Pahat', label: 'Batu Pahat'},
+							{value: 'Kota Kinabalu', label: 'Kota Kinabalu'},
+							{value: 'Kota Bharu', label: 'Kota Bharu'},
+							{value: 'Kota Tinggi', label: 'Kota Tinggi'}
+						]}
 						bind:value={selectedBranch}
-						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:border-transparent transition-colors"
-					>
-						<option value="">Semua Cawangan</option>
-						<option value="Kuala Lumpur">Kuala Lumpur</option>
-						<option value="Shah Alam">Shah Alam</option>
-						<option value="Kuantan">Kuantan</option>
-						<option value="Melaka">Melaka</option>
-						<option value="Bandar Baru Bangi">Bandar Baru Bangi</option>
-						<option value="Seremban">Seremban</option>
-						<option value="Batu Pahat">Batu Pahat</option>
-						<option value="Kota Kinabalu">Kota Kinabalu</option>
-						<option value="Kota Bharu">Kota Bharu</option>
-						<option value="Kota Tinggi">Kota Tinggi</option>
-					</select>
+						placeholder="Pilih cawangan"
+						searchable={true}
+						size="medium"
+						variant="default"
+					/>
 				</div>
 				<div>
-					<label for="status-filter" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-					<select 
-						id="status-filter"
+					<label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+					<Dropdown
+						options={[
+							{value: '', label: 'Semua Status'},
+							{value: 'Active', label: 'Active'},
+							{value: 'Inactive', label: 'Inactive'},
+							{value: 'Upcoming', label: 'Upcoming'}
+						]}
 						bind:value={selectedStatus}
-						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:border-transparent transition-colors"
-					>
-						<option value="">Semua Status</option>
-						<option value="Active">Active</option>
-						<option value="Inactive">Inactive</option>
-						<option value="Upcoming">Upcoming</option>
-					</select>
+						placeholder="Pilih status"
+						searchable={false}
+						size="medium"
+						variant="default"
+					/>
 				</div>
 			</div>
 		</div>
@@ -334,7 +341,7 @@
 				{:else}
 					<div class="text-center py-8 text-gray-500">
 						<Icon name="star" size="48" color="#9ca3af" />
-						<p class="mt-2 text-sm">Belum ada kategori dalam season ini</p>
+						<p class="mt-2 text-sm">Belum ada kategori dalam musim ini</p>
 						<p class="text-xs">Tambahkan kategori melalui halaman Input Data</p>
 					</div>
 				{/if}
@@ -347,9 +354,9 @@
 				<div class="p-3 sm:p-6">
 					<div class="text-center py-12 text-gray-500">
 						<Icon name="map-pin" size="64" color="#9ca3af" />
-						<h3 class="mt-2 text-sm font-medium text-gray-900">Tidak ada season</h3>
+						<h3 class="mt-2 text-sm font-medium text-gray-900">Tiada musim</h3>
 						<p class="mt-1 text-sm text-gray-500">
-							{searchTerm || selectedBranch || selectedStatus ? 'Tidak ada season yang sesuai dengan filter.' : 'Belum ada season Umrah.'}
+							{searchTerm || selectedBranch || selectedStatus ? 'Tiada musim yang sesuai dengan penapis.' : 'Belum ada musim Umrah.'}
 						</p>
 						<div class="mt-6">
 							<a href="/admin/input" class="btn-primary">

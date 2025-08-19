@@ -1,5 +1,6 @@
 <script>
 	import Icon from '../../../lib/icons.svelte';
+	import Dropdown from '../../../lib/components/Dropdown.svelte';
 
 	// Data destinasi Pelancongan
 	let availableDestinations = [
@@ -166,49 +167,53 @@
 					/>
 				</div>
 				<div>
-					<label for="destination-filter" class="block text-sm font-medium text-gray-700 mb-1">Destinasi</label>
-					<select 
-						id="destination-filter"
+					<label class="block text-sm font-medium text-gray-700 mb-1">Destinasi</label>
+					<Dropdown
+						options={[{value: '', label: 'Semua Destinasi'}, ...availableDestinations.map(dest => ({value: dest, label: dest}))]}
 						bind:value={selectedDestination}
-						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-colors"
-					>
-						<option value="">Semua Destinasi</option>
-						{#each availableDestinations as destination}
-							<option value={destination}>{destination}</option>
-						{/each}
-					</select>
+						placeholder="Pilih destinasi"
+						searchable={true}
+						size="medium"
+						variant="default"
+					/>
 				</div>
 				<div>
-					<label for="branch-filter" class="block text-sm font-medium text-gray-700 mb-1">Cawangan</label>
-					<select 
-						id="branch-filter"
+					<label class="block text-sm font-medium text-gray-700 mb-1">Cawangan</label>
+					<Dropdown
+						options={[
+							{value: '', label: 'Semua Cawangan'},
+							{value: 'Kuala Lumpur', label: 'Kuala Lumpur'},
+							{value: 'Shah Alam', label: 'Shah Alam'},
+							{value: 'Kuantan', label: 'Kuantan'},
+							{value: 'Melaka', label: 'Melaka'},
+							{value: 'Bandar Baru Bangi', label: 'Bandar Baru Bangi'},
+							{value: 'Seremban', label: 'Seremban'},
+							{value: 'Batu Pahat', label: 'Batu Pahat'},
+							{value: 'Kota Kinabalu', label: 'Kota Kinabalu'},
+							{value: 'Kota Bharu', label: 'Kota Bharu'},
+							{value: 'Kota Tinggi', label: 'Kota Tinggi'}
+						]}
 						bind:value={selectedCawangan}
-						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-colors"
-					>
-						<option value="">Semua Cawangan</option>
-						<option value="Kuala Lumpur">Kuala Lumpur</option>
-						<option value="Shah Alam">Shah Alam</option>
-						<option value="Kuantan">Kuantan</option>
-						<option value="Melaka">Melaka</option>
-						<option value="Bandar Baru Bangi">Bandar Baru Bangi</option>
-						<option value="Seremban">Seremban</option>
-						<option value="Batu Pahat">Batu Pahat</option>
-						<option value="Kota Kinabalu">Kota Kinabalu</option>
-						<option value="Kota Bharu">Kota Bharu</option>
-						<option value="Kota Tinggi">Kota Tinggi</option>
-					</select>
+						placeholder="Pilih cawangan"
+						searchable={true}
+						size="medium"
+						variant="default"
+					/>
 				</div>
 				<div>
-					<label for="status-filter" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-					<select 
-						id="status-filter"
+					<label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+					<Dropdown
+						options={[
+							{value: '', label: 'Semua Status'},
+							{value: 'active', label: 'Aktif'},
+							{value: 'inactive', label: 'Nonaktif'}
+						]}
 						bind:value={selectedStatus}
-						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-colors"
-					>
-						<option value="">Semua Status</option>
-						<option value="active">Aktif</option>
-						<option value="inactive">Nonaktif</option>
-					</select>
+						placeholder="Pilih status"
+						searchable={false}
+						size="medium"
+						variant="default"
+					/>
 				</div>
 			</div>
 		</div>
@@ -273,9 +278,9 @@
 			<div class="card-primary text-center py-12 text-gray-500">
 				<div class="p-2 sm:p-6">
 					<Icon name="plane" size="48" color="#9ca3af" />
-					<h3 class="mt-2 text-sm font-medium text-gray-900">Tidak ada Trip Pelancongan</h3>
+					<h3 class="mt-2 text-sm font-medium text-gray-900">Tiada Trip Pelancongan</h3>
 					<p class="mt-1 text-sm text-gray-500">
-						{searchTerm || selectedDestination || selectedCawangan || selectedStatus ? 'Tidak ada Trip yang sesuai dengan filter.' : 'Belum ada Trip Pelancongan yang dibuat.'}
+						{searchTerm || selectedDestination || selectedCawangan || selectedStatus ? 'Tiada Trip yang sesuai dengan penapis.' : 'Belum ada Trip Pelancongan yang dibuat.'}
 					</p>
 					<div class="mt-6">
 						<a href="/admin/destinations" class="btn-secondary">

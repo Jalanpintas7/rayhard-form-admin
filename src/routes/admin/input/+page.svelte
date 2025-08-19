@@ -1,5 +1,6 @@
 <script>
 	import Icon from '../../../lib/icons.svelte';
+	import Dropdown from '../../../lib/components/Dropdown.svelte';
 
 	// Data untuk dropdown
 	let adminBranches = [
@@ -53,6 +54,7 @@
 
 	// Selected season
 	let selectedMusim = null;
+	let selectedSeasonId = null;
 
 	// Data kategori untuk setiap season
 	let categoriesData = [
@@ -256,20 +258,23 @@
 					{#if selectedMusim}
 						Management Kategori - {selectedMusim.seasonName}
 					{:else}
-						Pilih Musim & Management Kategori
+						Pilih Musim & Pengurusan Kategori
 					{/if}
 				</h1>
 				<p class="text-gray-600 mt-1">
 					{#if selectedMusim}
-						Tambah dan Management kategori untuk season yang dipilih
+						Tambah dan urus kategori untuk musim yang dipilih
 					{:else}
-						Pilih season dari dropdown untuk mengelola kategori
+						Pilih musim dari dropdown untuk menguruskan kategori
 					{/if}
 				</p>
 			</div>
 			{#if selectedMusim}
 				<button 
-					on:click={() => selectedMusim = null}
+					on:click={() => {
+						selectedMusim = null;
+						selectedSeasonId = null;
+					}}
 					class="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors"
 				>
 					← Kembali ke Pilih Musim
@@ -283,7 +288,7 @@
 	</div>
 
 	{#if !selectedMusim}
-		<!-- Step 1: Pilih Musim -->
+		<!-- Langkah 1: Pilih Musim -->
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 			<!-- Dropdown Pilih Musim -->
 			<div class="card-primary">
@@ -300,23 +305,24 @@
 							<label for="season-select" class="block text-sm font-medium text-gray-700 mb-1">
 								Pilih Musim yang Tersedia *
 							</label>
-							<select 
-								id="season-select"
-								on:change={(e) => {
-									const seasonId = parseInt(e.target.value);
-									if (seasonId) {
-										selectedMusim = seasonsData.find(s => s.id === seasonId);
-									}
-								}}
-								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:border-transparent transition-colors"
-							>
-								<option value="">-- Pilih Musim --</option>
-								{#each seasonsData as season}
-									<option value={season.id}>
-										{season.seasonName} ({season.branch}) - {season.type === 'umrah' ? 'Umrah' : 'Pelancongan'}
-									</option>
-								{/each}
-							</select>
+							<Dropdown
+						options={seasonsData.map(season => ({
+							value: season.id,
+							label: `${season.seasonName} (${season.branch}) - ${season.type === 'umrah' ? 'Umrah' : 'Pelancongan'}`
+						}))}
+						bind:value={selectedSeasonId}
+						on:change={(e) => {
+							const seasonId = parseInt(e.detail);
+							if (seasonId) {
+								selectedMusim = seasonsData.find(s => s.id === seasonId);
+								selectedSeasonId = seasonId;
+							}
+						}}
+						placeholder="-- Pilih Musim --"
+						searchable={true}
+						size="medium"
+						variant="default"
+					/>
 						</div>
 
 						<div class="bg-primary-100 border border-primary-200 rounded-lg p-4">
@@ -351,7 +357,10 @@
 										<p class="text-sm text-gray-600">{formatDate(season.startDate)} - {formatDate(season.endDate)}</p>
 									</div>
 									<button 
-										on:click={() => selectedMusim = season}
+										on:click={() => {
+											selectedMusim = season;
+											selectedSeasonId = season.id;
+										}}
 										class="btn-primary text-xs px-3 py-1"
 									>
 										Pilih
@@ -509,17 +518,14 @@
 							<label for="Pelancongan-destination" class="block text-sm font-medium text-gray-700 mb-1">
 								Destinasi *
 							</label>
-							<select 
-								id="Pelancongan-destination"
-								bind:value={PelanconganCategoryForm.destination}
-								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:border-transparent transition-colors"
-								required
-							>
-								<option value="">Pilih Destinasi</option>
-								{#each PelanconganDestinations as destination}
-									<option value={destination}>{destination}</option>
-								{/each}
-							</select>
+							<Dropdown
+						options={PelanconganDestinations.map(dest => ({value: dest, label: dest}))}
+						bind:value={PelanconganCategoryForm.destination}
+						placeholder="Pilih Destinasi"
+						searchable={true}
+						size="medium"
+						variant="default"
+					/>
 						</div>
 
 						<!-- Date Range Section -->
@@ -701,7 +707,7 @@
 						{#if currentCategories.length === 0}
 							<div class="text-center py-8 text-gray-500">
 								<Icon name="star" size="48" color="#9ca3af" />
-								<p class="mt-2 text-sm">Belum ada kategori dalam season ini</p>
+								<p class="mt-2 text-sm">Belum ada kategori dalam musim ini</p>
 								<p class="text-xs">Tambahkan kategori menggunakan form di sebelah kiri</p>
 							</div>
 						{/if}

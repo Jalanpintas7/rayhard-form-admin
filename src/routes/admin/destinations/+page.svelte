@@ -1,5 +1,6 @@
 <script>
 	import Icon from '../../../lib/icons.svelte';
+	import Dropdown from '../../../lib/components/Dropdown.svelte';
 
 	// Data untuk dropdown
 	let adminCawanganes = [
@@ -141,9 +142,9 @@
 
 	function submitNewDestination() {
 		if (newDestinationForm.name.trim()) {
-			// Cek jika destinasi sudah ada
+			// Semak jika destinasi sudah ada
 			if (availableDestinations.includes(newDestinationForm.name.trim())) {
-				alert('Destinasi sudah ada dalam daftar!');
+				alert('Destinasi sudah ada dalam senarai!');
 				return;
 			}
 			
@@ -233,17 +234,14 @@
 						<label for="branch" class="block text-sm font-medium text-gray-700 mb-1">
 							Cawangan *
 						</label>
-						<select 
-							id="branch"
-							bind:value={TripForm.branch}
-							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-colors"
-							required
-						>
-							<option value="">Pilih Cawangan</option>
-							{#each adminCawanganes as branch}
-								<option value={branch}>{branch}</option>
-							{/each}
-						</select>
+						<Dropdown
+						options={adminCawanganes.map(branch => ({value: branch, label: branch}))}
+						bind:value={TripForm.branch}
+						placeholder="Pilih Cawangan"
+						searchable={true}
+						size="medium"
+						variant="default"
+					/>
 					</div>
 
 					<div>
@@ -259,17 +257,14 @@
 								+ Tambah Destinasi
 							</button>
 						</div>
-						<select 
-							id="destination"
-							bind:value={TripForm.destination}
-							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-colors"
-							required
-						>
-							<option value="">Pilih Destinasi</option>
-							{#each availableDestinations as destination}
-								<option value={destination}>{destination}</option>
-							{/each}
-						</select>
+						<Dropdown
+						options={availableDestinations.map(dest => ({value: dest, label: dest}))}
+						bind:value={TripForm.destination}
+						placeholder="Pilih Destinasi"
+						searchable={true}
+						size="medium"
+						variant="default"
+					/>
 					</div>
 
 					<!-- Date Range Section -->

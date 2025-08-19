@@ -118,7 +118,7 @@
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="flex justify-between items-center py-6">
 				<div class="flex items-center space-x-4">
-					<img src="/logo.png" alt="Rayhar Travel" class="h-12 w-auto" />
+					<img src="/src/lib/assets/favicon.svg" alt="Rayhar Travel" class="h-14 w-auto" />
 					<div class="hidden sm:block">
 						<h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
 						<p class="text-gray-600 mt-1">Selamat datang di sistem admin</p>
@@ -296,56 +296,62 @@
 		</div>
 
 		<!-- Tabel Pelanggan Terbaru -->
-		<div class="card-primary">
-			<div class="flex items-center justify-between mb-6">
-				<h3 class="text-lg font-semibold text-gray-900">Pelanggan Terbaru</h3>
-				<button class="text-primary-600 hover:text-primary-700 font-medium text-sm flex items-center">
-					Lihat Semua
-					<Icon name="arrow-up-right" size="16" color="#921E8D" />
-				</button>
-			</div>
-			<div class="overflow-x-auto">
-				<table class="min-w-full border border-gray-200 border-collapse">
-					<thead class="bg-gray-50">
-						<tr>
-							<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border border-gray-200">Nama</th>
-							<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border border-gray-200">Email</th>
-							<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border border-gray-200">Tipe</th>
-							<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border border-gray-200">Destinasi</th>
-							<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border border-gray-200">Status</th>
-							<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border border-gray-200">Tanggal</th>
-						</tr>
-					</thead>
-					<tbody class="bg-white">
-						{#each recentCustomers as customer}
-							<tr class="hover:bg-gray-50">
-								<td class="px-6 py-4 whitespace-nowrap border border-gray-200">
-									<div class="flex items-center">
-										<div class="w-8 h-8 rounded-full bg-gradient-to-r from-primary-600 to-[#AC2EAC] flex items-center justify-center">
-											<span class="text-white text-sm font-medium">{customer.name.charAt(0)}</span>
-										</div>
-										<div class="ml-4">
-											<div class="text-sm font-medium text-gray-900">{customer.name}</div>
-										</div>
-									</div>
-								</td>
-								<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border border-gray-200">{customer.email}</td>
-								<td class="px-6 py-4 whitespace-nowrap border border-gray-200">
-									<span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full {getTypeColor(customer.type)}">
-										{customer.type}
-									</span>
-								</td>
-								<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 border border-gray-200">{customer.destination}</td>
-								<td class="px-6 py-4 whitespace-nowrap border border-gray-200">
-									<span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full {getStatusColor(customer.status)}">
-										{customer.status}
-									</span>
-								</td>
-								<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border border-gray-200">{formatDate(customer.date)}</td>
+		<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+			<div class="p-6">
+				<div class="flex items-center justify-between mb-6">
+					<h3 class="text-xl font-bold text-gray-900">Pelanggan Terbaru</h3>
+					<a href="/admin/customers" class="text-primary-600 hover:text-primary-700 font-medium text-sm flex items-center transition-colors">
+						Lihat Semua
+						<Icon name="arrow-up-right" size="16" color="#921E8D" />
+					</a>
+				</div>
+				
+				<div class="overflow-hidden rounded-lg border border-gray-200">
+					<table class="min-w-full divide-y divide-gray-200">
+						<thead class="bg-gradient-to-r from-gray-50 to-gray-100">
+							<tr>
+								<th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Pelanggan</th>
+								<th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Tipe</th>
+								<th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Destinasi</th>
+								<th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Status</th>
+								<th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Tarikh</th>
 							</tr>
-						{/each}
-					</tbody>
-				</table>
+						</thead>
+						<tbody class="bg-white divide-y divide-gray-200">
+							{#each recentCustomers as customer}
+								<tr class="hover:bg-gray-50 transition-all duration-200">
+									<td class="px-6 py-4">
+										<div class="flex items-center space-x-4">
+											<div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary-600 to-[#AC2EAC] flex items-center justify-center shadow-sm">
+												<span class="text-white text-sm font-semibold">{customer.name.charAt(0)}</span>
+											</div>
+											<div>
+												<div class="text-sm font-semibold text-gray-900">{customer.name}</div>
+												<div class="text-xs text-gray-500">{customer.email}</div>
+											</div>
+										</div>
+									</td>
+									<td class="px-6 py-4">
+										<span class="inline-flex px-3 py-1 text-xs font-semibold rounded-full {getTypeColor(customer.type)}">
+											{customer.type}
+										</span>
+									</td>
+									<td class="px-6 py-4">
+										<div class="text-sm font-medium text-gray-900">{customer.destination}</div>
+									</td>
+									<td class="px-6 py-4">
+										<span class="inline-flex px-3 py-1 text-xs font-semibold rounded-full {getStatusColor(customer.status)}">
+											{customer.status}
+										</span>
+									</td>
+									<td class="px-6 py-4">
+										<div class="text-sm text-gray-600">{formatDate(customer.date)}</div>
+									</td>
+								</tr>
+							{/each}
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</main>

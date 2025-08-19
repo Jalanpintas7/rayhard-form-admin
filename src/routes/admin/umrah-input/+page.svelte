@@ -1,5 +1,6 @@
 <script>
 	import Icon from '../../../lib/icons.svelte';
+	import Dropdown from '../../../lib/components/Dropdown.svelte';
 	import PageHeader from '../../../lib/components/PageHeader.svelte';
 	import FormCard from '../../../lib/components/FormCard.svelte';
 	import Button from '../../../lib/components/Button.svelte';
@@ -43,6 +44,7 @@
 
 	// Selected season
 	let selectedMusim = null;
+	let selectedMusimId = null;
 
 	// Data kategori untuk setiap season
 	let umrahCategories = [
@@ -162,8 +164,8 @@
 <div>
 	<!-- Page Header -->
 	<PageHeader 
-		title={selectedMusim ? `Management Kategori Umrah - ${selectedMusim.seasonName}` : 'Pilih Musim Umrah & Management Kategori'}
-		subtitle={selectedMusim ? 'Tambah dan Management kategori untuk season Umrah yang dipilih' : 'Pilih season Umrah dari dropdown untuk mengelola kategori'}
+		title={selectedMusim ? `Pengurusan Kategori Umrah - ${selectedMusim.seasonName}` : 'Pilih Musim Umrah & Pengurusan Kategori'}
+		subtitle={selectedMusim ? 'Tambah dan urus kategori untuk musim Umrah yang dipilih' : 'Pilih musim Umrah dari dropdown untuk menguruskan kategori'}
 	/>
 
 	<!-- Action Buttons -->
@@ -180,7 +182,7 @@
 	</div>
 
 	{#if !selectedMusim}
-		<!-- Step 1: Pilih Musim Umrah -->
+		<!-- Langkah 1: Pilih Musim Umrah -->
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
 			<!-- Dropdown Pilih Musim -->
 			<FormCard 
@@ -192,23 +194,24 @@
 						<label for="season-select" class="block text-sm font-medium text-gray-700 mb-2">
 							Pilih Musim Umrah yang Tersedia *
 						</label>
-						<select 
-							id="season-select"
-							on:change={(e) => {
-								const seasonId = parseInt(e.target.value);
-								if (seasonId) {
-									selectedMusim = umrahMusims.find(s => s.id === seasonId);
-								}
-							}}
-							class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:border-transparent transition-colors"
-						>
-							<option value="">-- Pilih Musim Umrah --</option>
-							{#each umrahMusims as season}
-								<option value={season.id}>
-									{season.seasonName} ({season.branch})
-								</option>
-							{/each}
-						</select>
+						<Dropdown
+					options={umrahMusims.map(season => ({
+						value: season.id,
+						label: `${season.seasonName} (${season.branch})`
+					}))}
+					bind:value={selectedMusimId}
+					on:change={(e) => {
+						const seasonId = parseInt(e.detail);
+						if (seasonId) {
+							selectedMusimId = seasonId;
+							selectedMusim = umrahMusims.find(s => s.id === seasonId);
+						}
+					}}
+					placeholder="-- Pilih Musim Umrah --"
+					searchable={true}
+					size="medium"
+					variant="default"
+				/>
 					</div>
 
 					<div class="bg-primary-100 border border-primary-200 rounded-lg p-4">
@@ -253,7 +256,7 @@
 			<!-- Form Input Kategori Umrah -->
 			<FormCard 
 				title="Tambah Kategori Umrah"
-				subtitle="Tambah kategori baru untuk season yang dipilih"
+				subtitle="Tambah kategori baharu untuk musim yang dipilih"
 			>
 				<!-- Form Umrah -->
 				<form on:submit|preventDefault={submitUmrahCategory} class="space-y-4">
@@ -406,7 +409,7 @@
 					{#if currentCategories.length === 0}
 						<div class="text-center py-8 text-gray-500">
 							<Icon name="star" size="48" color="#9ca3af" />
-							<p class="mt-2 text-sm">Belum ada kategori dalam season ini</p>
+							<p class="mt-2 text-sm">Belum ada kategori dalam musim ini</p>
 							<p class="text-xs">Tambahkan kategori menggunakan form di sebelah kiri</p>
 						</div>
 					{/if}

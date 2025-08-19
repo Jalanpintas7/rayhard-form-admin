@@ -1,5 +1,6 @@
 <script>
 	import Icon from '../../../lib/icons.svelte';
+	import Dropdown from '../../../lib/components/Dropdown.svelte';
 
 	// Data untuk form Musim Umrah
 	let seasonForm = {
@@ -85,7 +86,7 @@
 			
 			alert('Musim berhasil ditambahkan!');
 		} else {
-			alert('Mohon lengkapi semua field yang wajib diisi!');
+			alert('Sila lengkapkan semua medan yang wajib diisi!');
 		}
 	}
 
@@ -275,31 +276,32 @@
 					/>
 				</div>
 				<div>
-					<label for="branch-filter" class="block text-sm font-medium text-gray-700 mb-1">Cawangan</label>
-					<select 
-						id="branch-filter"
+					<label class="block text-sm font-medium text-gray-700 mb-1">Cawangan</label>
+					<Dropdown
+						options={[{value: '', label: 'Semua Cawangan'}, ...adminCawanganes.map(branch => ({value: branch, label: branch}))]}
 						bind:value={selectedCawangan}
-						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:border-transparent transition-colors"
-					>
-						<option value="">Semua Cawangan</option>
-						{#each adminCawanganes as branch}
-							<option value={branch}>{branch}</option>
-						{/each}
-					</select>
+						placeholder="Pilih cawangan"
+						searchable={true}
+						size="medium"
+						variant="default"
+					/>
 				</div>
 
 				<div>
-					<label for="status-filter" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-					<select 
-						id="status-filter"
+					<label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+					<Dropdown
+						options={[
+							{value: '', label: 'Semua Status'},
+							{value: 'Active', label: 'Active'},
+							{value: 'Inactive', label: 'Inactive'},
+							{value: 'Upcoming', label: 'Upcoming'}
+						]}
 						bind:value={selectedStatus}
-						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:border-transparent transition-colors"
-					>
-						<option value="">Semua Status</option>
-						<option value="Active">Active</option>
-						<option value="Inactive">Inactive</option>
-						<option value="Upcoming">Upcoming</option>
-					</select>
+						placeholder="Pilih status"
+						searchable={false}
+						size="medium"
+						variant="default"
+					/>
 				</div>
 			</div>
 		</div>
@@ -376,9 +378,9 @@
 			{#if filteredMusims.length === 0}
 				<div class="text-center py-12 text-gray-500">
 					<Icon name="calendar" size="48" color="#9ca3af" />
-					<h3 class="mt-2 text-sm font-medium text-gray-900">Tidak ada season</h3>
+					<h3 class="mt-2 text-sm font-medium text-gray-900">Tiada musim</h3>
 					<p class="mt-1 text-sm text-gray-500">
-						{searchTerm || selectedCawangan || selectedStatus ? 'Tidak ada season yang sesuai dengan filter.' : 'Belum ada season yang dibuat.'}
+						{searchTerm || selectedCawangan || selectedStatus ? 'Tiada musim yang sesuai dengan penapis.' : 'Belum ada musim yang dibuat.'}
 					</p>
 				</div>
 			{/if}
