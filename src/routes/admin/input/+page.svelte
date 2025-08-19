@@ -287,10 +287,10 @@
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 			<!-- Dropdown Pilih Musim -->
 			<div class="card-primary">
-				<div class="p-6">
+				<div class="p-3 sm:p-6">
 					<div class="flex items-center mb-6">
-						<div class="p-2 bg-[#8E2168]/20 rounded-lg mr-3">
-							<Icon name="calendar" size="20" color="#8E2168" />
+						<div class="p-2 bg-primary-100 rounded-lg mr-3">
+							<Icon name="calendar" size="20" color="#921E8D" />
 						</div>
 						<h2 class="text-xl font-semibold text-gray-900">Pilih Musim</h2>
 					</div>
@@ -308,7 +308,7 @@
 										selectedMusim = seasonsData.find(s => s.id === seasonId);
 									}
 								}}
-								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8E2168] focus:border-transparent transition-colors"
+								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:border-transparent transition-colors"
 							>
 								<option value="">-- Pilih Musim --</option>
 								{#each seasonsData as season}
@@ -319,12 +319,12 @@
 							</select>
 						</div>
 
-						<div class="bg-[#8E2168]/10 border border-[#8E2168]/20 rounded-lg p-4">
+						<div class="bg-primary-100 border border-primary-200 rounded-lg p-4">
 							<div class="flex items-start">
-								<Icon name="eye" size="16" color="#8E2168" />
+								<Icon name="eye" size="16" color="#921E8D" />
 								<div class="ml-2">
-									<h4 class="text-sm font-medium text-[#8E2168]">Info</h4>
-									<p class="text-sm text-[#8E2168] mt-1">Pilih musim Umrah untuk mula menguruskan kategori di dalamnya. Jika musim belum wujud, sila buat terlebih dahulu di halaman 'Pengurusan Musim Umrah'.</p>
+									<h4 class="text-sm font-medium text-[#921E8D]">Info</h4>
+									<p class="text-sm text-[#921E8D] mt-1">Pilih musim Umrah untuk mula menguruskan kategori di dalamnya. Jika musim belum wujud, sila buat terlebih dahulu di halaman 'Pengurusan Musim Umrah'.</p>
 								</div>
 							</div>
 						</div>
@@ -334,7 +334,7 @@
 
 			<!-- Info Musim -->
 			<div class="card-primary">
-				<div class="p-6">
+				<div class="p-3 sm:p-6">
 					<h3 class="text-lg font-semibold text-gray-900 mb-4">Musim yang Tersedia</h3>
 					<div class="space-y-3 max-h-80 overflow-y-auto">
 						{#each seasonsData as season}
@@ -343,7 +343,7 @@
 									<div class="flex-1">
 										<div class="flex items-center space-x-2 mb-2">
 											<h4 class="font-medium text-gray-900">{season.seasonName}</h4>
-											<span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full {season.type === 'umrah' ? 'bg-[#8E2168]/20 text-[#8E2168]' : 'bg-[#462365]/20 text-[#462365]'}">
+											<span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full {season.type === 'umrah' ? 'bg-primary-100 text-primary-700' : 'bg-secondary-100 text-[#9A8F00]'}">
 												{season.type === 'umrah' ? 'Umrah' : 'Pelancongan'}
 											</span>
 										</div>
@@ -369,10 +369,10 @@
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 			<!-- Form Input Kategori -->
 			<div class="card-primary">
-				<div class="p-6">
+				<div class="p-3 sm:p-6">
 					<div class="flex items-center mb-6">
-						<div class="p-2 {selectedMusim.type === 'umrah' ? 'bg-[#8E2168]/20' : 'bg-[#462365]/20'} rounded-lg mr-3">
-							<Icon name={selectedMusim.type === 'umrah' ? 'map-pin' : 'plane'} size="20" color={selectedMusim.type === 'umrah' ? '#8E2168' : '#462365'} />
+						<div class="p-2 {selectedMusim.type === 'umrah' ? 'bg-primary-100' : 'bg-secondary-100'} rounded-lg mr-3">
+							<Icon name={selectedMusim.type === 'umrah' ? 'map-pin' : 'plane'} size="20" color={selectedMusim.type === 'umrah' ? '#921E8D' : '#9A8F00'} />
 						</div>
 						<h2 class="text-xl font-semibold text-gray-900">
 							Tambah Kategori {selectedMusim.type === 'umrah' ? 'Umrah' : 'Pelancongan'}
@@ -390,7 +390,7 @@
 								type="text" 
 								id="umrah-category-name"
 								bind:value={umrahCategoryForm.name}
-								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8E2168] focus:border-transparent transition-colors"
+								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:border-transparent transition-colors"
 								placeholder="Contoh: Premium, Regular, VIP"
 								required
 							/>
@@ -406,14 +406,14 @@
 								bind:value={umrahCategoryForm.days}
 								min="1"
 								max="365"
-								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8E2168] focus:border-transparent transition-colors"
+								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:border-transparent transition-colors"
 								required
 							/>
 						</div>
 
 						<!-- Pricing Section for Umrah -->
-						<div class="bg-[#8E2168]/10 rounded-lg p-4 border border-[#8E2168]/20">
-							<h4 class="text-sm font-semibold text-[#8E2168] mb-3">Harga </h4>
+						<div class="bg-primary-100 rounded-lg p-4 border border-primary-200">
+							<h4 class="text-sm font-semibold text-[#921E8D] mb-3">Harga </h4>
 							<div class="grid grid-cols-2 gap-3">
 								<div>
 									<label for="price-double" class="block text-xs font-medium text-gray-700 mb-1">
@@ -424,7 +424,7 @@
 										id="price-double"
 										bind:value={umrahCategoryForm.pricing.double}
 										min="0"
-										class="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-[#8E2168] transition-colors"
+										class="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-[#921E8D] transition-colors"
 										placeholder="0"
 									/>
 								</div>
@@ -437,7 +437,7 @@
 										id="price-triple"
 										bind:value={umrahCategoryForm.pricing.triple}
 										min="0"
-										class="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-[#8E2168] transition-colors"
+										class="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-[#921E8D] transition-colors"
 										placeholder="0"
 									/>
 								</div>
@@ -450,7 +450,7 @@
 										id="price-quadruple"
 										bind:value={umrahCategoryForm.pricing.quadruple}
 										min="0"
-										class="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-[#8E2168] transition-colors"
+										class="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-[#921E8D] transition-colors"
 										placeholder="0"
 									/>
 								</div>
@@ -463,7 +463,7 @@
 										id="price-quintuple"
 										bind:value={umrahCategoryForm.pricing.quintuple}
 										min="0"
-										class="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-[#8E2168] transition-colors"
+										class="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-[#921E8D] transition-colors"
 										placeholder="0"
 									/>
 								</div>
@@ -478,7 +478,7 @@
 								id="umrah-category-description"
 								bind:value={umrahCategoryForm.description}
 								rows="3"
-								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8E2168] focus:border-transparent transition-colors"
+								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:border-transparent transition-colors"
 								placeholder="Masukkan Description kategori umrah..."
 							></textarea>
 						</div>
@@ -488,7 +488,7 @@
 								type="checkbox" 
 								id="umrah-category-active"
 								bind:checked={umrahCategoryForm.isActive}
-								class="rounded border-gray-300 text-[#8E2168] focus:ring-[#8E2168]"
+								class="rounded border-gray-300 text-[#921E8D] focus:ring-[#921E8D]"
 							/>
 							<label for="umrah-category-active" class="ml-2 text-sm text-gray-700">
 								Aktif
@@ -512,7 +512,7 @@
 							<select 
 								id="Pelancongan-destination"
 								bind:value={PelanconganCategoryForm.destination}
-								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#462365] focus:border-transparent transition-colors"
+								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:border-transparent transition-colors"
 								required
 							>
 								<option value="">Pilih Destinasi</option>
@@ -523,8 +523,8 @@
 						</div>
 
 						<!-- Date Range Section -->
-						<div class="bg-[#462365]/10 rounded-lg p-4 border border-[#462365]/20">
-							<h4 class="text-sm font-semibold text-[#462365] mb-3">Tempoh Trip</h4>
+						<div class="bg-primary-100 rounded-lg p-4 border border-primary-200">
+							<h4 class="text-sm font-semibold text-[#921E8D] mb-3">Tempoh Trip</h4>
 							<div class="grid grid-cols-2 gap-3">
 								<div>
 									<label for="Pelancongan-start-date" class="block text-xs font-medium text-gray-700 mb-1">
@@ -534,7 +534,7 @@
 										type="date" 
 										id="Pelancongan-start-date"
 										bind:value={PelanconganCategoryForm.startDate}
-										class="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-[#462365] transition-colors"
+										class="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-[#921E8D] transition-colors"
 										required
 									/>
 								</div>
@@ -546,14 +546,14 @@
 										type="date" 
 										id="Pelancongan-end-date"
 										bind:value={PelanconganCategoryForm.endDate}
-										class="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-[#462365] transition-colors"
+										class="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-[#921E8D] transition-colors"
 										required
 									/>
 								</div>
 							</div>
 							{#if PelanconganCategoryForm.startDate && PelanconganCategoryForm.endDate}
-								<div class="mt-3 p-2 bg-white rounded border border-[#462365]/20">
-									<p class="text-xs text-[#462365]">
+								<div class="mt-3 p-2 bg-white rounded border border-secondary-200">
+									<p class="text-xs text-[#9A8F00]">
 										<strong>Nama Kategori:</strong> 
 										{formatDateForName(PelanconganCategoryForm.startDate)} - {formatDateForName(PelanconganCategoryForm.endDate)}
 									</p>
@@ -562,7 +562,7 @@
 						</div>
 
 						<!-- Price Section for Pelancongan -->
-						<div class="bg-[#E3BE1D]/10 rounded-lg p-4 border border-[#E3BE1D]/20">
+						<div class="bg-primary-100 rounded-lg p-4 border border-primary-200">
 							<h4 class="text-sm font-semibold text-[#B8940F] mb-3">Harga Pakej</h4>
 							<div>
 								<label for="Pelancongan-price" class="block text-sm font-medium text-gray-700 mb-1">
@@ -573,7 +573,7 @@
 									id="Pelancongan-price"
 									bind:value={PelanconganCategoryForm.price}
 									min="0"
-									class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#462365] focus:border-transparent transition-colors"
+									class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:border-transparent transition-colors"
 									placeholder="0"
 								/>
 							</div>
@@ -587,7 +587,7 @@
 								id="Pelancongan-category-description"
 								bind:value={PelanconganCategoryForm.description}
 								rows="3"
-								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#462365] focus:border-transparent transition-colors"
+								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:border-transparent transition-colors"
 								placeholder="Masukkan Description Trip Pelancongan..."
 							></textarea>
 						</div>
@@ -597,7 +597,7 @@
 								type="checkbox" 
 								id="Pelancongan-category-active"
 								bind:checked={PelanconganCategoryForm.isActive}
-								class="rounded border-gray-300 text-[#462365] focus:ring-[#462365]"
+								class="rounded border-gray-300 text-[#921E8D] focus:ring-[#921E8D]"
 							/>
 							<label for="Pelancongan-category-active" class="ml-2 text-sm text-gray-700">
 								Aktif
@@ -617,7 +617,7 @@
 
 			<!-- Daftar Kategori -->
 			<div class="card-primary">
-				<div class="p-6">
+				<div class="p-3 sm:p-6">
 					<h3 class="text-lg font-semibold text-gray-900 mb-4">
 						Kategori dalam {selectedMusim.seasonName}
 					</h3>
@@ -641,8 +641,8 @@
 										
 										<!-- Pricing Display -->
 										{#if selectedMusim.type === 'umrah' && category.pricing}
-											<div class="bg-[#8E2168]/10 rounded-lg p-3 mb-2 border border-[#8E2168]/20">
-												<h5 class="text-xs font-semibold text-[#8E2168] mb-2">Harga Kamar:</h5>
+											<div class="bg-primary-100 rounded-lg p-3 mb-2 border border-primary-200">
+												<h5 class="text-xs font-semibold text-[#921E8D] mb-2">Harga Kamar:</h5>
 												<div class="grid grid-cols-2 gap-2 text-xs">
 													<div class="flex justify-between">
 														<span class="text-gray-600">Double:</span>
@@ -663,19 +663,19 @@
 												</div>
 											</div>
 										{:else if selectedMusim.type === 'Pelancongan'}
-											<div class="bg-[#462365]/10 rounded-lg p-3 mb-2 border border-[#462365]/20">
+											<div class="bg-primary-100 rounded-lg p-3 mb-2 border border-primary-200">
 												<div class="flex justify-between items-center mb-2">
-													<h5 class="text-xs font-semibold text-[#462365]">Destinasi:</h5>
-													<span class="text-xs font-medium text-[#462365]">{category.destination}</span>
+													<h5 class="text-xs font-semibold text-[#921E8D]">Destinasi:</h5>
+													<span class="text-xs font-medium text-[#921E8D]">{category.destination}</span>
 												</div>
 												<div class="flex justify-between items-center mb-2">
-													<h5 class="text-xs font-semibold text-[#462365]">Tempoh:</h5>
-													<span class="text-xs text-[#462365]">{formatDate(category.startDate)} - {formatDate(category.endDate)}</span>
+													<h5 class="text-xs font-semibold text-[#921E8D]">Tempoh:</h5>
+													<span class="text-xs text-[#921E8D]">{formatDate(category.startDate)} - {formatDate(category.endDate)}</span>
 												</div>
 												{#if category.price}
 													<div class="flex justify-between items-center">
-														<h5 class="text-xs font-semibold text-[#462365]">Harga:</h5>
-														<span class="text-sm font-medium text-[#462365]">{formatPrice(category.price)} / orang</span>
+														<h5 class="text-xs font-semibold text-[#921E8D]">Harga:</h5>
+														<span class="text-sm font-medium text-[#921E8D]">{formatPrice(category.price)} / orang</span>
 													</div>
 												{/if}
 											</div>

@@ -96,7 +96,7 @@
 	}
 
 	function getTypeColor(type) {
-		return type === 'Umrah' ? 'bg-purple-100 text-purple-800' : 'bg-indigo-100 text-indigo-800';
+		return type === 'Umrah' ? 'bg-primary-100 text-primary-800' : 'bg-secondary-100 text-[#9A8F00]';
 	}
 
 	function formatDate(dateString) {
@@ -119,18 +119,19 @@
 			<div class="flex justify-between items-center py-6">
 				<div class="flex items-center space-x-4">
 					<img src="/logo.png" alt="Rayhar Travel" class="h-12 w-auto" />
-					<div>
+					<div class="hidden sm:block">
 						<h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
 						<p class="text-gray-600 mt-1">Selamat datang di sistem admin</p>
 					</div>
 				</div>
 				<div class="flex items-center space-x-4">
-					<div class="text-right">
+					<div class="text-right hidden sm:block">
 						<p class="text-sm text-gray-600">Hari ini</p>
 						<p class="text-lg font-semibold text-gray-900">{new Date().toLocaleDateString('ms-MY', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
 					</div>
-					<a href="/admin" class="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition-colors">
-						Admin Panel
+					<a href="/admin" class="btn-primary inline-flex items-center gap-2">
+						<span>Admin Panel</span>
+						<Icon name="arrow-up-right" size="16" color="white" />
 					</a>
 				</div>
 			</div>
@@ -153,8 +154,8 @@
 							<span class="text-sm text-gray-500 ml-1">dari bulan lalu</span>
 						</div>
 					</div>
-					<div class="p-3 bg-purple-600 rounded-lg">
-						<Icon name="users" size="24" color="white" />
+					<div class="p-3 bg-primary-600 rounded-lg">
+						<Icon name="users" size="24" color="#FFF00C" />
 					</div>
 				</div>
 			</div>
@@ -172,7 +173,7 @@
 						</div>
 					</div>
 					<div class="p-3 bg-green-500 rounded-lg">
-						<Icon name="map-pin" size="24" color="white" />
+						<Icon name="map-pin" size="24" color="#FFF00C" />
 					</div>
 				</div>
 			</div>
@@ -190,7 +191,7 @@
 						</div>
 					</div>
 					<div class="p-3 bg-amber-500 rounded-lg">
-						<Icon name="plane" size="24" color="white" />
+						<Icon name="plane" size="24" color="#FFF00C" />
 					</div>
 				</div>
 			</div>
@@ -203,12 +204,12 @@
 						<p class="text-3xl font-bold text-gray-900">{stats.popularDestinations}</p>
 						<div class="flex items-center mt-2">
 							<Icon name="star" size="16" color="#622369" />
-							<span class="text-sm text-purple-600 font-medium">TerPopular</span>
+							<span class="text-sm text-primary-600 font-medium">TerPopular</span>
 							<span class="text-sm text-gray-500 ml-1">Makkah & Madinah</span>
 						</div>
 					</div>
-					<div class="p-3 bg-purple-600 rounded-lg">
-						<Icon name="Trendding-up" size="24" color="white" />
+					<div class="p-3 bg-primary-600 rounded-lg">
+						<Icon name="Trendding-up" size="24" color="#FFF00C" />
 					</div>
 				</div>
 			</div>
@@ -217,16 +218,16 @@
 		<!-- Charts dan Data -->
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
 			<!-- Grafik Trend Bulanan -->
-			<div class="card">
+			<div class="card-primary">
 				<div class="flex items-center justify-between mb-6">
 					<h3 class="text-lg font-semibold text-gray-900">Trend Bulanan</h3>
 					<div class="flex items-center space-x-4">
 						<div class="flex items-center">
-							<div class="w-3 h-3 bg-purple-600 rounded-full mr-2"></div>
+							<div class="w-3 h-3 bg-primary-600 rounded-full mr-2"></div>
 							<span class="text-sm text-gray-600">Umrah</span>
 						</div>
 						<div class="flex items-center">
-							<div class="w-3 h-3 bg-indigo-500 rounded-full mr-2"></div>
+							<div class="w-3 h-3 bg-secondary-500 rounded-full mr-2"></div>
 							<span class="text-sm text-gray-600">Pelancongan</span>
 						</div>
 					</div>
@@ -238,17 +239,17 @@
 								<div class="w-full flex flex-col items-center justify-end h-48 space-y-1">
 									<!-- Batasi tinggi maksimal menjadi 180px (90% dari 200px) -->
 									<div 
-										class="bg-purple-600 rounded-sm w-full max-w-8" 
+										class="bg-primary-600 rounded-sm w-full max-w-8" 
 										style="height: {Math.min(Trendd.umrah * 1.8, 90)}px;"
 										title="Umrah: {Trendd.umrah}"
 									></div>
 									<div 
-										class="bg-indigo-500 rounded-sm w-full max-w-8" 
+										class="bg-secondary-500 rounded-sm w-full max-w-8" 
 										style="height: {Math.min(Trendd.Pelancongan * 1.8, 90)}px;"
 										title="Pelancongan: {Trendd.Pelancongan}"
 									></div>
 								</div>
-								<span class="text-xs text-gray-500 mt-2 font-medium">{Trendd.month}</span>
+								<span class="text-[10px] sm:text-xs text-gray-500 mt-1 sm:mt-2 font-medium leading-none whitespace-nowrap h-4 sm:h-5 flex items-center justify-center">{Trendd.month}</span>
 							</div>
 						{/each}
 					</div>
@@ -270,14 +271,14 @@
 			</div>
 
 			<!-- Destinasi TerPopular -->
-			<div class="card">
+			<div class="card-primary">
 				<h3 class="text-lg font-semibold text-gray-900 mb-6">Destinasi TerPopular</h3>
 				<div class="space-y-4">
 					{#each popularDestinations as destination}
 						<div class="flex items-center justify-between">
 							<div class="flex items-center space-x-3">
-								<div class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 flex items-center justify-center">
-									<Icon name="map-pin" size="20" color="white" />
+								<div class="w-10 h-10 rounded-full bg-gradient-to-r from-primary-600 to-[#AC2EAC] flex items-center justify-center">
+									<Icon name="map-pin" size="20" color="#FFF00C" />
 								</div>
 								<div>
 									<p class="font-medium text-gray-900">{destination.name}</p>
@@ -295,32 +296,32 @@
 		</div>
 
 		<!-- Tabel Pelanggan Terbaru -->
-		<div class="card">
+		<div class="card-primary">
 			<div class="flex items-center justify-between mb-6">
 				<h3 class="text-lg font-semibold text-gray-900">Pelanggan Terbaru</h3>
-				<button class="text-purple-600 hover:text-purple-700 font-medium text-sm flex items-center">
+				<button class="text-primary-600 hover:text-primary-700 font-medium text-sm flex items-center">
 					Lihat Semua
-					<Icon name="arrow-up-right" size="16" color="#622369" />
+					<Icon name="arrow-up-right" size="16" color="#921E8D" />
 				</button>
 			</div>
 			<div class="overflow-x-auto">
-				<table class="min-w-full divide-y divide-gray-200">
+				<table class="min-w-full border border-gray-200 border-collapse">
 					<thead class="bg-gray-50">
 						<tr>
-							<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama</th>
-							<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-							<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tipe</th>
-							<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Destinasi</th>
-							<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-							<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
+							<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border border-gray-200">Nama</th>
+							<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border border-gray-200">Email</th>
+							<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border border-gray-200">Tipe</th>
+							<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border border-gray-200">Destinasi</th>
+							<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border border-gray-200">Status</th>
+							<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border border-gray-200">Tanggal</th>
 						</tr>
 					</thead>
-					<tbody class="bg-white divide-y divide-gray-200">
+					<tbody class="bg-white">
 						{#each recentCustomers as customer}
 							<tr class="hover:bg-gray-50">
-								<td class="px-6 py-4 whitespace-nowrap">
+								<td class="px-6 py-4 whitespace-nowrap border border-gray-200">
 									<div class="flex items-center">
-										<div class="w-8 h-8 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 flex items-center justify-center">
+										<div class="w-8 h-8 rounded-full bg-gradient-to-r from-primary-600 to-[#AC2EAC] flex items-center justify-center">
 											<span class="text-white text-sm font-medium">{customer.name.charAt(0)}</span>
 										</div>
 										<div class="ml-4">
@@ -328,19 +329,19 @@
 										</div>
 									</div>
 								</td>
-								<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{customer.email}</td>
-								<td class="px-6 py-4 whitespace-nowrap">
+								<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border border-gray-200">{customer.email}</td>
+								<td class="px-6 py-4 whitespace-nowrap border border-gray-200">
 									<span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full {getTypeColor(customer.type)}">
 										{customer.type}
 									</span>
 								</td>
-								<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{customer.destination}</td>
-								<td class="px-6 py-4 whitespace-nowrap">
+								<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 border border-gray-200">{customer.destination}</td>
+								<td class="px-6 py-4 whitespace-nowrap border border-gray-200">
 									<span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full {getStatusColor(customer.status)}">
 										{customer.status}
 									</span>
 								</td>
-								<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{formatDate(customer.date)}</td>
+								<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border border-gray-200">{formatDate(customer.date)}</td>
 							</tr>
 						{/each}
 					</tbody>

@@ -4,90 +4,441 @@
 
 /* Custom Color Variables */
 :root {
-  --color-primary: #8E2168;
-  --color-secondary: #462365;
-  --color-accent: #E3BE1D;
-  --color-primary-light: #8E2168;
-  --color-secondary-light: #462365;
-  --color-accent-light: #E3BE1D;
+  --color-primary: #921E8D;
+  --color-secondary: #FFF00C;
+  --color-accent: #AC2EAC;
+  --color-primary-light: #921E8D;
+  --color-secondary-light: #FFF00C;
+  --color-accent-light: #AC2EAC;
 }
 
 /* Custom Utility Classes */
 @layer components {
   .btn-primary {
-    @apply bg-[#8E2168] hover:bg-[#7A1D5A] text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+    @apply bg-[#921E8D] hover:bg-[#7B1D7B] text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
   }
   
   .btn-secondary {
-    @apply bg-[#462365] hover:bg-[#3A1E54] text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+    @apply bg-[#FFF00C] hover:bg-[#E6DA10] text-gray-900 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
   }
   
   .btn-accent {
-    @apply bg-[#E3BE1D] hover:bg-[#D4B01A] text-gray-900 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+    @apply bg-[#AC2EAC] hover:bg-[#C964C9] text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
   }
   
   .card-primary {
-    @apply bg-white rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300;
+    @apply bg-white rounded-2xl shadow-[0_10px_30px_rgba(16,24,40,0.06)] ring-1 ring-gray-100/80 hover:shadow-[0_18px_40px_rgba(16,24,40,0.10)] hover:ring-gray-200 transition-all duration-300 transform-gpu hover:-translate-y-0.5;
   }
   
   .text-primary {
-    @apply text-[#8E2168];
+    @apply text-[#921E8D];
   }
   
   .text-secondary {
-    @apply text-[#462365];
+    @apply text-[#9A8F00];
   }
   
   .text-accent {
-    @apply text-[#E3BE1D];
+    @apply text-[#AC2EAC];
   }
   
   .bg-primary {
-    @apply bg-[#8E2168];
+    @apply bg-[#921E8D];
   }
   
   .bg-secondary {
-    @apply bg-[#462365];
+    @apply bg-[#FFF00C];
   }
   
   .bg-accent {
-    @apply bg-[#E3BE1D];
+    @apply bg-[#AC2EAC];
   }
   
   .border-primary {
-    @apply border-[#8E2168];
+    @apply border-[#921E8D];
   }
   
   .border-secondary {
-    @apply border-[#462365];
+    @apply border-[#FFF00C];
   }
   
   .border-accent {
-    @apply border-[#E3BE1D];
+    @apply border-[#AC2EAC];
   }
 }
 
-/* Custom Scrollbar */
+/* Custom CSS untuk komponen */
+@layer components {
+	.card-primary {
+		@apply bg-white rounded-2xl shadow-[0_8px_26px_rgba(16,24,40,0.05)] ring-1 ring-gray-100/70 hover:shadow-[0_18px_38px_rgba(16,24,40,0.10)] hover:ring-gray-200 transition-all duration-300 p-3 sm:p-6;
+	}
+
+	/* Khusus area admin: kecilkan padding card di desktop */
+	.admin-layout .card-primary,
+	.admin-layout .card-separated,
+	.admin-layout .card-gradient-border,
+	.admin-layout .card-dashed-border,
+	.admin-layout .card-shadow-border,
+	.admin-layout .card-animated-border,
+	.admin-layout .card-rounded-border,
+	.admin-layout .card-glow-border,
+	.admin-layout .card-double-border,
+	.admin-layout .card-corner-accent,
+	.admin-layout .card-striped-border {
+		@apply p-2 sm:p-4;
+	}
+	
+	/* Card dengan border pemisah yang menarik */
+	.card-separated {
+		@apply bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-all duration-200 relative overflow-hidden p-2 sm:p-6;
+	}
+	
+	.card-separated::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 4px;
+		background: linear-gradient(90deg, #921E8D, #AC2EAC, #FFF00C);
+		opacity: 0.9;
+	}
+	
+	.card-separated:hover::before {
+		opacity: 1;
+		height: 5px;
+	}
+	
+	/* Card dengan border gradient yang menarik */
+	.card-gradient-border {
+		@apply bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 relative p-2 sm:p-6;
+		background: linear-gradient(white, white) padding-box,
+					linear-gradient(135deg, #921E8D, #AC2EAC, #FFF00C) border-box;
+		border: 3px solid transparent;
+	}
+	
+	/* Card dengan border dashed yang menarik */
+	.card-dashed-border {
+		@apply bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 p-2 sm:p-6;
+		border: 3px dashed #921E8D;
+		background-image: 
+			radial-gradient(circle at 2px 2px, #921E8D 2px, transparent 0);
+		background-size: 25px 25px;
+		background-position: -2px -2px;
+	}
+	
+	/* Card dengan border shadow yang menarik */
+	.card-shadow-border {
+		@apply bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-200 p-2 sm:p-6;
+		box-shadow: 
+			0 2px 4px 0 rgba(0, 0, 0, 0.1),
+			0 1px 2px 0 rgba(0, 0, 0, 0.06),
+			inset 0 0 0 2px rgba(142, 33, 104, 0.15);
+	}
+	
+	.card-shadow-border:hover {
+		box-shadow: 
+			0 15px 35px -5px rgba(0, 0, 0, 0.1),
+			0 10px 20px -5px rgba(0, 0, 0, 0.04),
+			inset 0 0 0 2px rgba(142, 33, 104, 0.25);
+	}
+	
+	/* Card dengan border animated */
+	.card-animated-border {
+		@apply bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 relative overflow-hidden p-2 sm:p-6;
+	}
+	
+	.card-animated-border::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 0;
+		height: 4px;
+		background: linear-gradient(90deg, #921E8D, #AC2EAC, #FFF00C);
+		transition: width 0.4s ease-in-out;
+	}
+	
+	.card-animated-border:hover::after {
+		width: 100%;
+	}
+	
+	/* Statistik cards dengan border yang menarik */
+	.stat-card {
+		@apply bg-white rounded-lg shadow-sm p-3 sm:p-6 hover:shadow-md transition-all duration-200 relative overflow-hidden;
+		border-left: 5px solid #921E8D;
+		border-top: 2px solid rgba(148, 35, 146, 0.1);
+		border-right: 2px solid rgba(148, 35, 146, 0.1);
+		border-bottom: 2px solid rgba(148, 35, 146, 0.1);
+	}
+	
+	.stat-card-success {
+		@apply bg-white rounded-lg shadow-sm p-3 sm:p-6 hover:shadow-md transition-all duration-200 relative overflow-hidden;
+		border-left: 5px solid #10B981;
+		border-top: 2px solid rgba(16, 185, 129, 0.1);
+		border-right: 2px solid rgba(16, 185, 129, 0.1);
+		border-bottom: 2px solid rgba(16, 185, 129, 0.1);
+	}
+	
+	.stat-card-warning {
+		@apply bg-white rounded-lg shadow-sm p-3 sm:p-6 hover:shadow-md transition-all duration-200 relative overflow-hidden;
+		border-left: 5px solid #F59E0B;
+		border-top: 2px solid rgba(245, 158, 11, 0.1);
+		border-right: 2px solid rgba(245, 158, 11, 0.1);
+		border-bottom: 2px solid rgba(245, 158, 11, 0.1);
+	}
+	
+	.stat-card-purple {
+		@apply bg-white rounded-lg shadow-sm p-3 sm:p-6 hover:shadow-md transition-all duration-200 relative overflow-hidden;
+		border-left: 5px solid #8B5CF6;
+		border-top: 2px solid rgba(139, 92, 246, 0.1);
+		border-right: 2px solid rgba(139, 92, 246, 0.1);
+		border-bottom: 2px solid rgba(139, 92, 246, 0.1);
+	}
+	
+	/* Card dengan border rounded yang menarik */
+	.card-rounded-border {
+		@apply bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 p-2 sm:p-6;
+		border: 3px solid transparent;
+		background: 
+			linear-gradient(white, white) padding-box,
+			linear-gradient(45deg, #921E8D, #AC2EAC, #FFF00C, #921E8D) border-box;
+		background-size: 400% 400%;
+		animation: gradientShift 4s ease infinite;
+	}
+	
+	@keyframes gradientShift {
+		0% { background-position: 0% 50%; }
+		50% { background-position: 100% 50%; }
+		100% { background-position: 0% 50%; }
+	}
+	
+	/* Card dengan border glow effect */
+	.card-glow-border {
+		@apply bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 p-2 sm:p-6;
+		border: 2px solid rgba(148, 35, 146, 0.2);
+		box-shadow: 
+			0 2px 4px 0 rgba(0, 0, 0, 0.1),
+			0 1px 2px 0 rgba(0, 0, 0, 0.06),
+			0 0 0 1px rgba(148, 35, 146, 0.1);
+	}
+	
+	.card-glow-border:hover {
+		border-color: rgba(148, 35, 146, 0.5);
+		box-shadow: 
+			0 15px 35px -5px rgba(0, 0, 0, 0.1),
+			0 10px 20px -5px rgba(0, 0, 0, 0.04),
+			0 0 0 1px rgba(148, 35, 146, 0.3),
+			0 0 25px rgba(148, 35, 146, 0.15);
+	}
+	
+	/* Card dengan border double */
+	.card-double-border {
+		@apply bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 p-2 sm:p-6 relative;
+		border: 2px solid #921E8D;
+	}
+	
+	.card-double-border::before {
+		content: '';
+		position: absolute;
+		top: 8px;
+		left: 8px;
+		right: 8px;
+		bottom: 8px;
+		border: 1px solid rgba(142, 33, 104, 0.3);
+		border-radius: 8px;
+		pointer-events: none;
+	}
+	
+	/* Card dengan border corner accent */
+	.card-corner-accent {
+		@apply bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 p-2 sm:p-6 relative overflow-hidden;
+	}
+	
+	.card-corner-accent::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 0 30px 30px 0;
+		border-color: transparent #921E8D transparent transparent;
+		transition: all 0.3s ease;
+	}
+	
+	.card-corner-accent:hover::before {
+		border-width: 0 35px 35px 0;
+	}
+	
+	/* Card dengan border striped */
+	.card-striped-border {
+		@apply bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 p-2 sm:p-6;
+		border: 3px solid transparent;
+		background: 
+			linear-gradient(white, white) padding-box,
+			repeating-linear-gradient(
+				45deg,
+				#921E8D,
+				#921E8D 5px,
+				#AC2EAC 5px,
+				#AC2EAC 10px,
+				#FFF00C 10px,
+				#FFF00C 15px
+			) border-box;
+	}
+	
+	.btn-primary {
+		@apply bg-gradient-to-r from-[#921E8D] to-[#AC2EAC] text-white px-4 py-2 text-base rounded-lg hover:from-[#7B1D7B] hover:to-[#C964C9] focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:ring-offset-2 transition-all duration-200 font-medium;
+	}
+	
+	.btn-secondary {
+		@apply bg-[#FFF00C] text-gray-900 px-4 py-2 rounded-lg hover:bg-[#E6DA10] focus:outline-none focus:ring-2 focus:ring-[#FFF00C] focus:ring-offset-2 transition-all duration-200 font-medium;
+	}
+	
+	.btn-outline {
+		@apply border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-all duration-200 font-medium;
+	}
+	
+	.input-primary {
+		@apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:border-transparent transition-colors;
+	}
+	
+	.badge-primary {
+		@apply inline-flex px-2.5 py-1.5 text-xs font-semibold rounded-full;
+	}
+	
+	.badge-success {
+		@apply bg-green-100 text-green-800;
+	}
+	
+	.badge-warning {
+		@apply bg-secondary-100 text-[#9A8F00];
+	}
+	
+	.badge-danger {
+		@apply bg-red-100 text-red-800;
+	}
+	
+	.badge-umrah {
+		@apply bg-primary-100 text-primary-700;
+	}
+	
+	.badge-pelancongan {
+		@apply bg-secondary-100 text-[#9A8F00];
+	}
+}
+
+/* Responsive utilities */
+@layer utilities {
+	/* Override padding utilitas untuk area admin di breakpoint sm (>=640px) */
+	@media (min-width: 640px) {
+		.admin-layout .sm\:p-6 { padding: 1rem; }
+		.admin-layout .sm\:p-5 { padding: 1rem; }
+	}
+	.text-responsive-sm {
+		@apply text-sm sm:text-base;
+	}
+	
+	.text-responsive-lg {
+		@apply text-lg sm:text-xl;
+	}
+	
+	.text-responsive-xl {
+		@apply text-xl sm:text-2xl;
+	}
+	
+	.text-responsive-2xl {
+		@apply text-2xl sm:text-3xl;
+	}
+	
+	.p-responsive {
+		@apply p-4 sm:p-6;
+	}
+	
+	.px-responsive {
+		@apply px-4 sm:px-6;
+	}
+	
+	.py-responsive {
+		@apply py-4 sm:py-6;
+	}
+	
+	.mb-responsive {
+		@apply mb-6 sm:mb-8;
+	}
+	
+	.gap-responsive {
+		@apply gap-4 sm:gap-6;
+	}
+	
+	.gap-responsive-lg {
+		@apply gap-6 sm:gap-8;
+	}
+}
+
+/* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+	width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+	background: #f1f1f1;
+	border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #8E2168, #462365);
-  border-radius: 3px;
+	background: #c1c1c1;
+	border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #7A1D5A, #3A1E54);
+	background: #a8a8a8;
 }
 
-/* Smooth transitions for all elements */
+/* Smooth transitions */
 * {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
+	transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-duration: 150ms;
+}
+
+/* Focus styles */
+.focus-ring {
+	@apply focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:ring-offset-2;
+}
+
+/* Loading states */
+.loading {
+	@apply opacity-50 cursor-not-allowed;
+}
+
+/* Animation utilities */
+.fade-in {
+	animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.slide-in {
+	animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+	from {
+		transform: translateX(-100%);
+	}
+	to {
+		transform: translateX(0);
+	}
 }

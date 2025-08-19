@@ -22,7 +22,7 @@
 		<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
 		<circle cx="12" cy="10" r="3"></circle>
 	</svg>
-{:else if name === 'Trendding-up'}
+{:else if name === 'trending-up' || name === 'Trendding-up'}
 	<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class={class_name}>
 		<polyline points="22,7 13.5,15.5 8.5,10.5 2,17"></polyline>
 		<polyline points="16,7 22,7 22,13"></polyline>

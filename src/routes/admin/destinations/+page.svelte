@@ -206,12 +206,12 @@
 <div>
 	<!-- Header -->
 	<div class="mb-8">
-		<div class="flex items-center justify-between">
+		<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
 			<div>
 				<h1 class="text-3xl font-bold text-gray-900">Input Trip Pelancongan</h1>
 				<p class="text-gray-600 mt-1">Tambah Trip Pelancongan baru berdasarkan destinasi dan Tempoh</p>
 			</div>
-			<a href="/admin/Pelancongan" class="btn-secondary">
+			<a href="/admin/Pelancongan" class="w-full sm:w-auto text-center btn-secondary">
 				Lihat Data Pelancongan
 			</a>
 		</div>
@@ -220,10 +220,10 @@
 	<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 		<!-- Form Input Trip Pelancongan -->
 		<div class="card-primary">
-			<div class="p-6">
+			<div class="p-2 sm:p-6">
 				<div class="flex items-center mb-6">
-					<div class="p-2 bg-[#462365]/20 rounded-lg mr-3">
-						<Icon name="plane" size="20" color="#462365" />
+					<div class="p-2 bg-secondary-100 rounded-lg mr-3">
+						<Icon name="plane" size="20" color="#9A8F00" />
 					</div>
 					<h2 class="text-xl font-semibold text-gray-900">Tambah Trip Pelancongan</h2>
 				</div>
@@ -236,7 +236,7 @@
 						<select 
 							id="branch"
 							bind:value={TripForm.branch}
-							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#462365] focus:border-transparent transition-colors"
+							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-colors"
 							required
 						>
 							<option value="">Pilih Cawangan</option>
@@ -254,7 +254,7 @@
 							<button 
 								type="button"
 								on:click={openAddDestinationModal}
-								class="text-xs text-[#462365] hover:text-[#3A1E54] font-medium transition-colors"
+								class="text-xs text-[#9A8F00] hover:text-[#7A7400] font-medium transition-colors"
 							>
 								+ Tambah Destinasi
 							</button>
@@ -262,7 +262,7 @@
 						<select 
 							id="destination"
 							bind:value={TripForm.destination}
-							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#462365] focus:border-transparent transition-colors"
+							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-colors"
 							required
 						>
 							<option value="">Pilih Destinasi</option>
@@ -273,8 +273,8 @@
 					</div>
 
 					<!-- Date Range Section -->
-					<div class="bg-[#462365]/10 rounded-lg p-4 border border-[#462365]/20">
-						<h4 class="text-sm font-semibold text-[#462365] mb-3">Tempoh Trip</h4>
+					<div class="bg-secondary-100 rounded-lg p-4 border border-secondary-200">
+						<h4 class="text-sm font-semibold text-[#9A8F00] mb-3">Tempoh Trip</h4>
 						<div class="grid grid-cols-2 gap-3">
 							<div>
 								<label for="start-date" class="block text-xs font-medium text-gray-700 mb-1">
@@ -284,7 +284,7 @@
 									type="date" 
 									id="start-date"
 									bind:value={TripForm.startDate}
-									class="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-[#462365] transition-colors"
+									class="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-secondary-500 transition-colors"
 									required
 								/>
 							</div>
@@ -296,14 +296,14 @@
 									type="date" 
 									id="end-date"
 									bind:value={TripForm.endDate}
-									class="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-[#462365] transition-colors"
+									class="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-secondary-500 transition-colors"
 									required
 								/>
 							</div>
 						</div>
 						{#if TripForm.startDate && TripForm.endDate}
-							<div class="mt-3 p-2 bg-white rounded border border-[#462365]/30">
-								<p class="text-xs text-[#462365]">
+							<div class="mt-3 p-2 bg-white rounded border border-secondary-300">
+								<p class="text-xs text-[#9A8F00]">
 									<strong>Nama Trip:</strong> 
 									{formatDateForName(TripForm.startDate)} - {formatDateForName(TripForm.endDate)}
 								</p>
@@ -312,8 +312,8 @@
 					</div>
 
 					<!-- Price Section -->
-					<div class="bg-[#E3BE1D]/10 rounded-lg p-4 border border-[#E3BE1D]/20">
-						<h4 class="text-sm font-semibold text-[#B8940F] mb-3">Harga Trip</h4>
+					<div class="bg-secondary-100 rounded-lg p-4 border border-secondary-200">
+						<h4 class="text-sm font-semibold text-[#9A8F00] mb-3">Harga Trip</h4>
 						<div>
 							<label for="price" class="block text-sm font-medium text-gray-700 mb-1">
 								Harga Per Pax
@@ -323,7 +323,7 @@
 								id="price"
 								bind:value={TripForm.price}
 								min="0"
-								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E3BE1D] focus:border-transparent transition-colors"
+								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-colors"
 								placeholder="0"
 							/>
 						</div>
@@ -337,7 +337,7 @@
 							id="description"
 							bind:value={TripForm.description}
 							rows="3"
-							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#462365] focus:border-transparent transition-colors"
+							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-colors"
 							placeholder="Masukkan Description Trip Pelancongan..."
 						></textarea>
 					</div>
@@ -347,7 +347,7 @@
 							type="checkbox" 
 							id="Trip-active"
 							bind:checked={TripForm.isActive}
-							class="rounded border-gray-300 text-[#462365] focus:ring-[#462365]"
+							class="rounded border-gray-300 text-[#9A8F00] focus:ring-secondary-500"
 						/>
 						<label for="Trip-active" class="ml-2 text-sm text-gray-700">
 							Aktif
@@ -375,7 +375,7 @@
 								<p class="text-sm font-medium text-gray-600">Total Trip</p>
 								<p class="text-2xl font-bold text-gray-900">{PelanconganTrips.length}</p>
 							</div>
-							<div class="p-3 bg-[#462365] rounded-lg">
+							<div class="p-3 bg-[#9A8F00] rounded-lg">
 								<Icon name="plane" size="20" color="white" />
 							</div>
 						</div>
@@ -388,7 +388,7 @@
 								<p class="text-sm font-medium text-gray-600">Trip Aktif</p>
 								<p class="text-2xl font-bold text-gray-900">{PelanconganTrips.filter(t => t.isActive).length}</p>
 							</div>
-							<div class="p-3 bg-[#E3BE1D] rounded-lg">
+							<div class="p-3 bg-[#FFF00C] rounded-lg">
 								<Icon name="Trendding-up" size="20" color="#1F2937" />
 							</div>
 						</div>
@@ -398,7 +398,7 @@
 
 			<!-- Destinasi Tersedia -->
 			<div class="card-primary">
-				<div class="p-6">
+				<div class="p-2 sm:p-6">
 					<h3 class="text-lg font-semibold text-gray-900 mb-4">Destinasi Tersedia</h3>
 					<div class="space-y-2">
 						{#each availableDestinations.slice(0, 5) as destination}
@@ -444,7 +444,7 @@
 							type="text" 
 							id="new-destination-name"
 							bind:value={newDestinationForm.name}
-							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#462365] focus:border-transparent transition-colors"
+							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-colors"
 							placeholder="Contoh: Hanoi - Vietnam"
 							required
 						/>
@@ -458,7 +458,7 @@
 							id="new-destination-description"
 							bind:value={newDestinationForm.description}
 							rows="3"
-							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#462365] focus:border-transparent transition-colors"
+							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-colors"
 							placeholder="Description singkat tentang destinasi..."
 						></textarea>
 					</div>

@@ -164,18 +164,18 @@
 		switch(status) {
 			case 'Active': return 'bg-green-100 text-green-800';
 			case 'Inactive': return 'bg-red-100 text-red-800';
-			case 'Upcoming': return 'bg-[#E3BE1D]/20 text-[#B8940F]';
+			case 'Upcoming': return 'bg-secondary-100 text-[#9A8F00]';
 			default: return 'bg-gray-100 text-gray-800';
 		}
 	}
 
 	function getCategoryColor(category) {
 		switch(category) {
-			case 'Premium': return 'bg-[#8E2168]/20 text-[#8E2168]';
-			case 'VIP': return 'bg-[#E3BE1D]/20 text-[#B8940F]';
-			case 'Regular': return 'bg-[#462365]/20 text-[#462365]';
+			case 'Premium': return 'bg-primary-100 text-primary-700';
+			case 'VIP': return 'bg-secondary-100 text-[#9A8F00]';
+			case 'Regular': return 'bg-secondary-100 text-[#9A8F00]';
 			case 'Ekonomi': return 'bg-green-100 text-green-800';
-			case 'Bisnis': return 'bg-[#462365]/20 text-[#462365]';
+			case 'Bisnis': return 'bg-secondary-100 text-[#9A8F00]';
 			default: return 'bg-gray-100 text-gray-800';
 		}
 	}
@@ -188,7 +188,7 @@
 <div>
 	<!-- Header -->
 	<div class="mb-8">
-		<div class="flex items-center justify-between">
+		<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
 			<div>
 				<h1 class="text-3xl font-bold text-gray-900">Data Umrah</h1>
 				<p class="text-gray-600 mt-1">Management data Pakej Umrah</p>
@@ -201,7 +201,7 @@
 
 	<!-- Filters -->
 	<div class="card-primary mb-6">
-		<div class="p-6">
+		<div class="p-2 sm:p-6">
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 				<div>
 					<label for="search" class="block text-sm font-medium text-gray-700 mb-1">Cari</label>
@@ -210,7 +210,7 @@
 						id="search"
 						bind:value={searchTerm}
 						placeholder="Cari season atau branch..."
-						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8E2168] focus:border-transparent transition-colors"
+						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:border-transparent transition-colors"
 					/>
 				</div>
 				<div>
@@ -218,7 +218,7 @@
 					<select 
 						id="branch-filter"
 						bind:value={selectedBranch}
-						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8E2168] focus:border-transparent transition-colors"
+						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:border-transparent transition-colors"
 					>
 						<option value="">Semua Cawangan</option>
 						<option value="Kuala Lumpur">Kuala Lumpur</option>
@@ -238,7 +238,7 @@
 					<select 
 						id="status-filter"
 						bind:value={selectedStatus}
-						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8E2168] focus:border-transparent transition-colors"
+						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:border-transparent transition-colors"
 					>
 						<option value="">Semua Status</option>
 						<option value="Active">Active</option>
@@ -258,17 +258,17 @@
 			{@const activeCategoriesCount = getActiveCategoriesCount(season.id)}
 			
 			<div class="card-primary">
-				<div class="p-6">
+				<div class="p-3 sm:p-6">
 					<!-- Musim Header -->
 					<div class="border-b border-gray-200 pb-4 mb-4">
-						<div class="flex items-center justify-between">
+						<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
 							<div class="flex items-center space-x-4">
-								<div class="w-12 h-12 rounded-full bg-gradient-to-r from-[#8E2168] to-[#462365] flex items-center justify-center">
-									<Icon name="map-pin" size="24" color="white" />
+								<div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-primary-600 to-[#AC2EAC] flex items-center justify-center">
+									<Icon name="map-pin" size="24" color="#FFF00C" />
 								</div>
 								<div>
 									<h3 class="text-xl font-semibold text-gray-900">{season.seasonName}</h3>
-									<div class="flex items-center space-x-4 mt-1">
+									<div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1">
 										<span class="text-sm text-gray-600">{season.branch}</span>
 										<span class="text-sm text-gray-600">
 											{formatDate(season.startDate)} - {formatDate(season.endDate)}
@@ -282,18 +282,18 @@
 									</div>
 								</div>
 							</div>
-							<div class="flex items-center space-x-4">
-								<div class="text-right">
-									<p class="text-sm text-gray-600">Total Pelanggan</p>
-									<p class="text-lg font-semibold text-gray-900">{totalCustomers}</p>
+							<div class="flex items-center gap-3 sm:gap-6 mt-2 sm:mt-0 sm:ml-auto flex-wrap">
+								<div class="text-left sm:text-right min-w-[120px] sm:min-w-[140px]">
+									<p class="text-xs sm:text-sm text-gray-600">Total Pelanggan</p>
+									<p class="text-base sm:text-lg font-semibold text-gray-900">{totalCustomers}</p>
 								</div>
-								<div class="text-right">
-									<p class="text-sm text-gray-600">Kategori Aktif</p>
-									<p class="text-lg font-semibold text-gray-900">{activeCategoriesCount}/{categories.length}</p>
+								<div class="text-left sm:text-right min-w-[120px] sm:min-w-[140px]">
+									<p class="text-xs sm:text-sm text-gray-600">Kategori Aktif</p>
+									<p class="text-base sm:text-lg font-semibold text-gray-900">{activeCategoriesCount}/{categories.length}</p>
 								</div>
 								<button 
 									on:click={() => deleteMusim(season.id)}
-									class="text-red-600 hover:text-red-800 transition-colors"
+									class="inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-600 hover:bg-red-50 hover:border-red-300 hover:text-red-700 transition-colors"
 									aria-label="Hapus season"
 								>
 									<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -344,7 +344,7 @@
 
 		{#if filteredMusims.length === 0}
 			<div class="card-primary">
-				<div class="p-6">
+				<div class="p-3 sm:p-6">
 					<div class="text-center py-12 text-gray-500">
 						<Icon name="map-pin" size="64" color="#9ca3af" />
 						<h3 class="mt-2 text-sm font-medium text-gray-900">Tidak ada season</h3>

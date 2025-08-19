@@ -140,12 +140,12 @@
 <div>
 	<!-- Header -->
 	<div class="mb-8">
-		<div class="flex items-center justify-between">
+		<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
 			<div>
 				<h1 class="text-3xl font-bold text-gray-900">Data Pelancongan</h1>
 				<p class="text-gray-600 mt-1">Management data Trip Pelancongan berdasarkan destinasi dan Tempoh</p>
 			</div>
-			<a href="/admin/destinations" class="btn-secondary">
+			<a href="/admin/destinations" class="w-full sm:w-auto text-center btn-secondary">
 				Tambah Trip Pelancongan
 			</a>
 		</div>
@@ -153,7 +153,7 @@
 
 	<!-- Filters -->
 	<div class="card-primary mb-6">
-		<div class="p-6">
+		<div class="p-2 sm:p-6">
 			<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
 				<div>
 					<label for="search" class="block text-sm font-medium text-gray-700 mb-1">Cari</label>
@@ -162,7 +162,7 @@
 						id="search"
 						bind:value={searchTerm}
 						placeholder="Cari Trip, destinasi, atau branch..."
-						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#462365] focus:border-transparent transition-colors"
+						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-colors"
 					/>
 				</div>
 				<div>
@@ -170,7 +170,7 @@
 					<select 
 						id="destination-filter"
 						bind:value={selectedDestination}
-						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#462365] focus:border-transparent transition-colors"
+						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-colors"
 					>
 						<option value="">Semua Destinasi</option>
 						{#each availableDestinations as destination}
@@ -183,7 +183,7 @@
 					<select 
 						id="branch-filter"
 						bind:value={selectedCawangan}
-						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#462365] focus:border-transparent transition-colors"
+						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-colors"
 					>
 						<option value="">Semua Cawangan</option>
 						<option value="Kuala Lumpur">Kuala Lumpur</option>
@@ -203,7 +203,7 @@
 					<select 
 						id="status-filter"
 						bind:value={selectedStatus}
-						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#462365] focus:border-transparent transition-colors"
+						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-colors"
 					>
 						<option value="">Semua Status</option>
 						<option value="active">Aktif</option>
@@ -218,10 +218,10 @@
 	<div class="space-y-6">
 		{#each Object.entries(TripsByDestination) as [destination, Trips]}
 			<div class="card-primary">
-				<div class="p-6">
+				<div class="p-2 sm:p-6">
 					<div class="flex items-center justify-between mb-4">
 						<h3 class="text-lg font-semibold text-gray-900 flex items-center">
-							<Icon name="map-pin" size="20" color="#462365" class_name="mr-2" />
+							<Icon name="map-pin" size="20" color="#9A8F00" class_name="mr-2" />
 							{destination}
 						</h3>
 						<span class="text-sm text-gray-500">{Trips.length} Trip</span>
@@ -271,7 +271,7 @@
 
 		{#if Object.keys(TripsByDestination).length === 0}
 			<div class="card-primary text-center py-12 text-gray-500">
-				<div class="p-6">
+				<div class="p-2 sm:p-6">
 					<Icon name="plane" size="48" color="#9ca3af" />
 					<h3 class="mt-2 text-sm font-medium text-gray-900">Tidak ada Trip Pelancongan</h3>
 					<p class="mt-1 text-sm text-gray-500">

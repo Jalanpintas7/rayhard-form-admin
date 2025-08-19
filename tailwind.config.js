@@ -8,17 +8,31 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Brand primary: Purple #921E8D
         primary: {
-          50: '#faf5ff',
-          100: '#f3e8ff',
-          200: '#e9d5ff',
-          300: '#d8b4fe',
-          400: '#c084fc',
-          500: '#a855f7',
-          600: '#622369',
-          700: '#7c3aed',
-          800: '#6b21a8',
-          900: '#581c87',
+          50: '#f7eaf7',
+          100: '#efd5ef',
+          200: '#dfabe0',
+          300: '#ce81d0',
+          400: '#bc57c1',
+          500: '#a334a8',
+          600: '#921E8D', // base
+          700: '#7b1d7b',
+          800: '#6f1b6e',
+          900: '#4f1350',
+        },
+        // Brand secondary: Yellow #FFF00C
+        secondary: {
+          50: '#fffde6',
+          100: '#fffac2',
+          200: '#fff68f',
+          300: '#fff14d',
+          400: '#FFE91A',
+          500: '#FFF00C', // base
+          600: '#e6da10',
+          700: '#bfb50d',
+          800: '#998f0a',
+          900: '#736a08',
         },
         success: {
           50: '#f0fdf4',

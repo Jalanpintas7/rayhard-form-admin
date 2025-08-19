@@ -119,7 +119,7 @@
 		switch(status) {
 			case 'Active': return 'bg-green-100 text-green-800';
 			case 'Inactive': return 'bg-red-100 text-red-800';
-			case 'Upcoming': return 'bg-[#E3BE1D]/20 text-[#B8940F]';
+			case 'Upcoming': return 'bg-secondary-100 text-[#9A8F00]';
 			default: return 'bg-gray-100 text-gray-800';
 		}
 	}
@@ -143,31 +143,16 @@
 	<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 		<!-- Form Input Musim -->
 		<div class="card-primary">
-			<div class="p-6">
+			<div class="p-2 sm:p-6">
 				<div class="flex items-center mb-6">
-					<div class="p-2 bg-[#8E2168]/20 rounded-lg mr-3">
-						<Icon name="calendar" size="20" color="#8E2168" />
+					<div class="p-2 bg-primary-100 rounded-lg mr-3">
+						<Icon name="calendar" size="20" color="#921E8D" />
 					</div>
 					<h2 class="text-xl font-semibold text-gray-900">Pakej Baru</h2>
 				</div>
 
 				<form on:submit|preventDefault={submitMusim} class="space-y-4">
-					<div>
-						<label for="branch" class="block text-sm font-medium text-gray-700 mb-1">
-							Cawangan *
-						</label>
-						<select 
-							id="branch"
-							bind:value={seasonForm.branch}
-							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8E2168] focus:border-transparent transition-colors"
-							required
-						>
-							<option value="">Pilih Cawangan</option>
-							{#each adminCawanganes as branch}
-								<option value={branch}>{branch}</option>
-							{/each}
-						</select>
-					</div>
+					
 
 					<div>
 						<label for="season-name" class="block text-sm font-medium text-gray-700 mb-1">
@@ -177,13 +162,13 @@
 							type="text" 
 							id="season-name"
 							bind:value={seasonForm.seasonName}
-							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8E2168] focus:border-transparent transition-colors"
+							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:border-transparent transition-colors"
 							placeholder="Contoh: Ramadan 2024, Syawal 2024"
 							required
 						/>
 					</div>
 
-					<div class="grid grid-cols-2 gap-4">
+					<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 						<div>
 							<label for="start-date" class="block text-sm font-medium text-gray-700 mb-1">
 								Start Date *
@@ -192,7 +177,7 @@
 								type="date" 
 								id="start-date"
 								bind:value={seasonForm.startDate}
-								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8E2168] focus:border-transparent transition-colors"
+								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:border-transparent transition-colors"
 								required
 							/>
 						</div>
@@ -204,7 +189,7 @@
 								type="date" 
 								id="end-date"
 								bind:value={seasonForm.endDate}
-								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8E2168] focus:border-transparent transition-colors"
+								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:border-transparent transition-colors"
 								required
 							/>
 						</div>
@@ -223,7 +208,7 @@
 		<!-- Summary -->
 		<div class="space-y-6">
 			<!-- Stats Cards -->
-			<div class="grid grid-cols-2 gap-4">
+			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 				<div class="card-primary">
 					<div class="p-4">
 						<div class="flex items-center justify-between">
@@ -231,7 +216,7 @@
 								<p class="text-sm font-medium text-gray-600">Total Musim</p>
 								<p class="text-2xl font-bold text-gray-900">{seasonsData.length}</p>
 							</div>
-							<div class="p-3 bg-[#8E2168] rounded-lg">
+							<div class="p-3 bg-[#921E8D] rounded-lg">
 								<Icon name="calendar" size="20" color="white" />
 							</div>
 						</div>
@@ -244,7 +229,7 @@
 								<p class="text-sm font-medium text-gray-600">Musim Aktif</p>
 								<p class="text-2xl font-bold text-gray-900">{seasonsData.filter(s => s.status === 'Active').length}</p>
 							</div>
-							<div class="p-3 bg-[#E3BE1D] rounded-lg">
+							<div class="p-3 bg-[#FFF00C] rounded-lg">
 								<Icon name="Trendding-up" size="20" color="#1F2937" />
 							</div>
 						</div>
@@ -254,7 +239,7 @@
 
 			<!-- Quick Info -->
 			<div class="card-primary">
-				<div class="p-6">
+				<div class="p-2 sm:p-6">
 					<h3 class="text-lg font-semibold text-gray-900 mb-4">Info Musim</h3>
 					<div class="space-y-3">
 						<div class="flex justify-between">
@@ -277,7 +262,7 @@
 
 	<!-- Filters -->
 	<div class="card-primary mt-8 mb-6">
-		<div class="p-6">
+		<div class="p-2 sm:p-6">
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 				<div>
 					<label for="search" class="block text-sm font-medium text-gray-700 mb-1">Cari</label>
@@ -286,7 +271,7 @@
 						id="search"
 						bind:value={searchTerm}
 						placeholder="Cari season atau branch..."
-						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8E2168] focus:border-transparent transition-colors"
+						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:border-transparent transition-colors"
 					/>
 				</div>
 				<div>
@@ -294,7 +279,7 @@
 					<select 
 						id="branch-filter"
 						bind:value={selectedCawangan}
-						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8E2168] focus:border-transparent transition-colors"
+						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:border-transparent transition-colors"
 					>
 						<option value="">Semua Cawangan</option>
 						{#each adminCawanganes as branch}
@@ -308,7 +293,7 @@
 					<select 
 						id="status-filter"
 						bind:value={selectedStatus}
-						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#8E2168] focus:border-transparent transition-colors"
+						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#921E8D] focus:border-transparent transition-colors"
 					>
 						<option value="">Semua Status</option>
 						<option value="Active">Active</option>
@@ -322,7 +307,7 @@
 
 	<!-- Daftar Musim -->
 	<div class="card-primary">
-		<div class="p-6">
+		<div class="p-2 sm:p-6">
 			<div class="flex items-center justify-between mb-6">
 				<h3 class="text-lg font-semibold text-gray-900">Daftar Musim</h3>
 				<span class="text-sm text-gray-500">{filteredMusims.length} dari {seasonsData.length} season</span>
@@ -344,8 +329,8 @@
 							<tr class="hover:bg-gray-50 transition-colors">
 								<td class="px-6 py-4 whitespace-nowrap">
 									<div class="flex items-center">
-										<div class="w-8 h-8 rounded-full bg-gradient-to-r from-[#8E2168] to-[#462365] flex items-center justify-center">
-											<Icon name="map-pin" size="16" color="white" />
+										<div class="w-8 h-8 rounded-full bg-gradient-to-r from-primary-600 to-[#AC2EAC] flex items-center justify-center">
+											<Icon name="map-pin" size="16" color="#FFF00C" />
 										</div>
 										<div class="ml-4">
 											<div class="text-sm font-medium text-gray-900">{season.seasonName}</div>
@@ -366,7 +351,7 @@
 								</td>
 								<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
 									<div class="flex items-center space-x-2">
-										<a href="/admin/umrah-input" class="text-[#8E2168] hover:text-[#7A1D5A] transition-colors" aria-label="Management kategori">
+										<a href="/admin/umrah-input" class="text-[#921E8D] hover:text-[#7B1D7B] transition-colors" aria-label="Management kategori">
 											<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
 											</svg>
