@@ -2,30 +2,92 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html {
-    font-family: 'Inter', system-ui, sans-serif;
+/* Custom Color Variables */
+:root {
+  --color-primary: #8E2168;
+  --color-secondary: #462365;
+  --color-accent: #E3BE1D;
+  --color-primary-light: #8E2168;
+  --color-secondary-light: #462365;
+  --color-accent-light: #E3BE1D;
+}
+
+/* Custom Utility Classes */
+@layer components {
+  .btn-primary {
+    @apply bg-[#8E2168] hover:bg-[#7A1D5A] text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-[#462365] hover:bg-[#3A1E54] text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-accent {
+    @apply bg-[#E3BE1D] hover:bg-[#D4B01A] text-gray-900 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .card-primary {
+    @apply bg-white rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300;
+  }
+  
+  .text-primary {
+    @apply text-[#8E2168];
+  }
+  
+  .text-secondary {
+    @apply text-[#462365];
+  }
+  
+  .text-accent {
+    @apply text-[#E3BE1D];
+  }
+  
+  .bg-primary {
+    @apply bg-[#8E2168];
+  }
+  
+  .bg-secondary {
+    @apply bg-[#462365];
+  }
+  
+  .bg-accent {
+    @apply bg-[#E3BE1D];
+  }
+  
+  .border-primary {
+    @apply border-[#8E2168];
+  }
+  
+  .border-secondary {
+    @apply border-[#462365];
+  }
+  
+  .border-accent {
+    @apply border-[#E3BE1D];
   }
 }
 
-@layer components {
-  .card {
-    @apply bg-white rounded-xl shadow-sm border border-gray-200 p-6;
-  }
-  
-  .stat-card {
-    @apply bg-gradient-to-br from-purple-50 to-violet-100 rounded-xl p-6 border border-purple-200;
-  }
-  
-  .stat-card-success {
-    @apply bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl p-6 border border-green-200;
-  }
-  
-  .stat-card-warning {
-    @apply bg-gradient-to-br from-amber-50 to-orange-100 rounded-xl p-6 border border-amber-200;
-  }
-  
-  .stat-card-purple {
-    @apply bg-gradient-to-br from-purple-50 to-violet-100 rounded-xl p-6 border border-purple-200;
-  }
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #8E2168, #462365);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #7A1D5A, #3A1E54);
+}
+
+/* Smooth transitions for all elements */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }

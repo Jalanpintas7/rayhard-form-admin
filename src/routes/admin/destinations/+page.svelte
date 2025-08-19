@@ -2,18 +2,20 @@
 	import Icon from '../../../lib/icons.svelte';
 
 	// Data untuk dropdown
-	let adminBranches = [
-		'Jakarta Pusat',
-		'Jakarta Selatan',
-		'Bandung',
-		'Surabaya',
-		'Medan',
-		'Makassar',
-		'Palembang',
-		'Semarang'
+	let adminCawanganes = [
+		'Kuala Lumpur',
+		'Shah Alam',
+		'Kuantan',
+		'Melaka',
+		'Bandar Baru Bangi',
+		'Seremban',
+		'Batu Pahat',
+		'Kota Kinabalu',
+		'Kota Bharu',
+		'Kota Tinggi'
 	];
 
-	// Data destinasi outbound
+	// Data destinasi Pelancongan
 	let availableDestinations = [
 		'Tokyo - Japan',
 		'Paris - France',
@@ -27,17 +29,17 @@
 		'New York - USA'
 	];
 
-	// Data outbound tours yang sudah dibuat
-	let outboundTours = [
+	// Data Pelancongan Trips yang sudah dibuat
+	let PelanconganTrips = [
 		{
 			id: 1,
 			destination: 'Istanbul - Turkey',
-			name: '10 Oktober - 12 Desember',
+			name: '10 Oktober - 12 Disember',
 			startDate: '2024-10-10',
 			endDate: '2024-12-12',
-			branch: 'Jakarta Pusat',
-			price: 15000000,
-			description: 'Tour warisan budaya Istanbul musim gugur',
+			branch: 'Kuala Lumpur',
+			price: 4350,
+			description: 'Trip warisan budaya Istanbul musim gugur',
 			isActive: true
 		},
 		{
@@ -46,31 +48,31 @@
 			name: '15 Januari - 28 Februari',
 			startDate: '2025-01-15',
 			endDate: '2025-02-28',
-			branch: 'Bandung',
-			price: 18000000,
-			description: 'Tour musim dingin Istanbul',
+			branch: 'Shah Alam',
+			price: 5220,
+			description: 'Trip musim dingin Istanbul',
 			isActive: true
 		},
 		{
 			id: 3,
 			destination: 'Tokyo - Japan',
-			name: '5 Maret - 20 Maret',
+			name: '5 Mac - 20 Mac',
 			startDate: '2025-03-05',
 			endDate: '2025-03-20',
-			branch: 'Jakarta Pusat',
-			price: 25000000,
-			description: 'Tour Sakura Tokyo musim semi',
+			branch: 'Kuantan',
+			price: 7250,
+			description: 'Trip Sakura Tokyo musim semi',
 			isActive: true
 		},
 		{
 			id: 4,
 			destination: 'Paris - France',
-			name: '1 Juni - 15 Juni',
+			name: '1 Jun - 15 Jun',
 			startDate: '2025-06-01',
 			endDate: '2025-06-15',
-			branch: 'Surabaya',
-			price: 35000000,
-			description: 'Tour Paris musim panas',
+			branch: 'Melaka',
+			price: 10150,
+			description: 'Trip Paris musim panas',
 			isActive: false
 		},
 		{
@@ -79,15 +81,15 @@
 			name: '10 April - 25 April',
 			startDate: '2025-04-10',
 			endDate: '2025-04-25',
-			branch: 'Jakarta Selatan',
-			price: 22000000,
-			description: 'Tour Seoul musim semi',
+			branch: 'Seremban',
+			price: 6380,
+			description: 'Trip Seoul musim semi',
 			isActive: true
 		}
 	];
 
-	// Form untuk tour outbound baru
-	let tourForm = {
+	// Form untuk Trip Pelancongan baru
+	let TripForm = {
 		destination: '',
 		startDate: '',
 		endDate: '',
@@ -106,24 +108,22 @@
 	// Modal state
 	let showAddDestinationModal = false;
 
-
-
-	function submitTour() {
-		if (tourForm.destination && tourForm.startDate && tourForm.endDate && tourForm.branch) {
+	function submitTrip() {
+		if (TripForm.destination && TripForm.startDate && TripForm.endDate && TripForm.branch) {
 			// Generate nama dari date range
-			const startDateFormatted = formatDateForName(tourForm.startDate);
-			const endDateFormatted = formatDateForName(tourForm.endDate);
+			const startDateFormatted = formatDateForName(TripForm.startDate);
+			const endDateFormatted = formatDateForName(TripForm.endDate);
 			const generatedName = `${startDateFormatted} - ${endDateFormatted}`;
 			
-			const newTour = {
-				id: outboundTours.length + 1,
+			const newTrip = {
+				id: PelanconganTrips.length + 1,
 				name: generatedName,
-				...tourForm
+				...TripForm
 			};
-			outboundTours = [...outboundTours, newTour];
+			PelanconganTrips = [...PelanconganTrips, newTrip];
 			
 			// Reset form
-			tourForm = {
+			TripForm = {
 				destination: '',
 				startDate: '',
 				endDate: '',
@@ -133,7 +133,7 @@
 				isActive: true
 			};
 			
-			alert('Tour Outbound berhasil ditambahkan!');
+			alert('Trip Pelancongan berhasil ditambahkan!');
 		} else {
 			alert('Mohon lengkapi destinasi, start date, end date, dan branch!');
 		}
@@ -175,10 +175,8 @@
 		};
 	}
 
-
-
 	function formatDate(dateString) {
-		return new Date(dateString).toLocaleDateString('id-ID', {
+		return new Date(dateString).toLocaleDateString('ms-MY', {
 			day: 'numeric',
 			month: 'long',
 			year: 'numeric'
@@ -186,23 +184,23 @@
 	}
 
 	function formatDateForName(dateString) {
-		return new Date(dateString).toLocaleDateString('id-ID', {
+		return new Date(dateString).toLocaleDateString('ms-MY', {
 			day: 'numeric',
 			month: 'long'
 		});
 	}
 
 	function formatPrice(price) {
-		return new Intl.NumberFormat('id-ID', {
+		return new Intl.NumberFormat('ms-MY', {
 			style: 'currency',
-			currency: 'IDR',
+			currency: 'MYR',
 			minimumFractionDigits: 0
 		}).format(price);
 	}
 </script>
 
 <svelte:head>
-	<title>Destinasi Outbound - Rayhar Travel Admin</title>
+	<title>Destinasi Pelancongan - Rayhar Travel Admin</title>
 </svelte:head>
 
 <div>
@@ -210,207 +208,213 @@
 	<div class="mb-8">
 		<div class="flex items-center justify-between">
 			<div>
-				<h1 class="text-3xl font-bold text-gray-900">Input Tour Outbound</h1>
-				<p class="text-gray-600 mt-1">Tambah tour outbound baru berdasarkan destinasi dan periode</p>
+				<h1 class="text-3xl font-bold text-gray-900">Input Trip Pelancongan</h1>
+				<p class="text-gray-600 mt-1">Tambah Trip Pelancongan baru berdasarkan destinasi dan Tempoh</p>
 			</div>
-			<a href="/admin/outbound" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors">
-				Lihat Data Outbound
+			<a href="/admin/Pelancongan" class="btn-secondary">
+				Lihat Data Pelancongan
 			</a>
 		</div>
 	</div>
 
 	<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-		<!-- Form Input Tour Outbound -->
-		<div class="card">
-			<div class="flex items-center mb-6">
-				<div class="p-2 bg-indigo-100 rounded-lg mr-3">
-					<Icon name="plane" size="20" color="#4f46e5" />
-				</div>
-				<h2 class="text-xl font-semibold text-gray-900">Tambah Tour Outbound</h2>
-			</div>
-
-			<form on:submit|preventDefault={submitTour} class="space-y-4">
-				<div>
-					<label for="branch" class="block text-sm font-medium text-gray-700 mb-1">
-						Branch *
-					</label>
-					<select 
-						id="branch"
-						bind:value={tourForm.branch}
-						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-						required
-					>
-						<option value="">Pilih Branch</option>
-						{#each adminBranches as branch}
-							<option value={branch}>{branch}</option>
-						{/each}
-					</select>
-				</div>
-
-				<div>
-					<div class="flex items-center justify-between mb-1">
-						<label for="destination" class="block text-sm font-medium text-gray-700">
-							Destinasi *
-						</label>
-						<button 
-							type="button"
-							on:click={openAddDestinationModal}
-							class="text-xs text-indigo-600 hover:text-indigo-800 font-medium"
-						>
-							+ Tambah Destinasi
-						</button>
+		<!-- Form Input Trip Pelancongan -->
+		<div class="card-primary">
+			<div class="p-6">
+				<div class="flex items-center mb-6">
+					<div class="p-2 bg-[#462365]/20 rounded-lg mr-3">
+						<Icon name="plane" size="20" color="#462365" />
 					</div>
-					<select 
-						id="destination"
-						bind:value={tourForm.destination}
-						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-						required
-					>
-						<option value="">Pilih Destinasi</option>
-						{#each availableDestinations as destination}
-							<option value={destination}>{destination}</option>
-						{/each}
-					</select>
+					<h2 class="text-xl font-semibold text-gray-900">Tambah Trip Pelancongan</h2>
 				</div>
 
-				<!-- Date Range Section -->
-				<div class="bg-indigo-50 rounded-lg p-4">
-					<h4 class="text-sm font-semibold text-indigo-900 mb-3">Periode Tour</h4>
-					<div class="grid grid-cols-2 gap-3">
-						<div>
-							<label for="start-date" class="block text-xs font-medium text-gray-700 mb-1">
-								Start Date *
-							</label>
-							<input 
-								type="date" 
-								id="start-date"
-								bind:value={tourForm.startDate}
-								class="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-indigo-500"
-								required
-							/>
-						</div>
-						<div>
-							<label for="end-date" class="block text-xs font-medium text-gray-700 mb-1">
-								End Date *
-							</label>
-							<input 
-								type="date" 
-								id="end-date"
-								bind:value={tourForm.endDate}
-								class="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-indigo-500"
-								required
-							/>
-						</div>
-					</div>
-					{#if tourForm.startDate && tourForm.endDate}
-						<div class="mt-3 p-2 bg-white rounded border border-indigo-200">
-							<p class="text-xs text-indigo-700">
-								<strong>Nama Tour:</strong> 
-								{formatDateForName(tourForm.startDate)} - {formatDateForName(tourForm.endDate)}
-							</p>
-						</div>
-					{/if}
-				</div>
-
-				<!-- Price Section -->
-				<div class="bg-indigo-50 rounded-lg p-4">
-					<h4 class="text-sm font-semibold text-indigo-900 mb-3">Harga Tour</h4>
+				<form on:submit|preventDefault={submitTrip} class="space-y-4">
 					<div>
-						<label for="price" class="block text-sm font-medium text-gray-700 mb-1">
-							Harga Per Orang
+						<label for="branch" class="block text-sm font-medium text-gray-700 mb-1">
+							Cawangan *
 						</label>
-						<input 
-							type="number" 
-							id="price"
-							bind:value={tourForm.price}
-							min="0"
-							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-							placeholder="0"
-						/>
+						<select 
+							id="branch"
+							bind:value={TripForm.branch}
+							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#462365] focus:border-transparent transition-colors"
+							required
+						>
+							<option value="">Pilih Cawangan</option>
+							{#each adminCawanganes as branch}
+								<option value={branch}>{branch}</option>
+							{/each}
+						</select>
 					</div>
-				</div>
 
-				<div>
-					<label for="description" class="block text-sm font-medium text-gray-700 mb-1">
-						Deskripsi Tour
-					</label>
-					<textarea 
-						id="description"
-						bind:value={tourForm.description}
-						rows="3"
-						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-						placeholder="Masukkan deskripsi tour outbound..."
-					></textarea>
-				</div>
+					<div>
+						<div class="flex items-center justify-between mb-1">
+							<label for="destination" class="block text-sm font-medium text-gray-700">
+								Destinasi *
+							</label>
+							<button 
+								type="button"
+								on:click={openAddDestinationModal}
+								class="text-xs text-[#462365] hover:text-[#3A1E54] font-medium transition-colors"
+							>
+								+ Tambah Destinasi
+							</button>
+						</div>
+						<select 
+							id="destination"
+							bind:value={TripForm.destination}
+							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#462365] focus:border-transparent transition-colors"
+							required
+						>
+							<option value="">Pilih Destinasi</option>
+							{#each availableDestinations as destination}
+								<option value={destination}>{destination}</option>
+							{/each}
+						</select>
+					</div>
 
-				<div class="flex items-center">
-					<input 
-						type="checkbox" 
-						id="tour-active"
-						bind:checked={tourForm.isActive}
-						class="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-					/>
-					<label for="tour-active" class="ml-2 text-sm text-gray-700">
-						Aktif
-					</label>
-				</div>
+					<!-- Date Range Section -->
+					<div class="bg-[#462365]/10 rounded-lg p-4 border border-[#462365]/20">
+						<h4 class="text-sm font-semibold text-[#462365] mb-3">Tempoh Trip</h4>
+						<div class="grid grid-cols-2 gap-3">
+							<div>
+								<label for="start-date" class="block text-xs font-medium text-gray-700 mb-1">
+									Start Date *
+								</label>
+								<input 
+									type="date" 
+									id="start-date"
+									bind:value={TripForm.startDate}
+									class="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-[#462365] transition-colors"
+									required
+								/>
+							</div>
+							<div>
+								<label for="end-date" class="block text-xs font-medium text-gray-700 mb-1">
+									End Date *
+								</label>
+								<input 
+									type="date" 
+									id="end-date"
+									bind:value={TripForm.endDate}
+									class="w-full px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-[#462365] transition-colors"
+									required
+								/>
+							</div>
+						</div>
+						{#if TripForm.startDate && TripForm.endDate}
+							<div class="mt-3 p-2 bg-white rounded border border-[#462365]/30">
+								<p class="text-xs text-[#462365]">
+									<strong>Nama Trip:</strong> 
+									{formatDateForName(TripForm.startDate)} - {formatDateForName(TripForm.endDate)}
+								</p>
+							</div>
+						{/if}
+					</div>
 
-				<button 
-					type="submit"
-					class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors"
-				>
-					Tambah Tour Outbound
-				</button>
-			</form>
+					<!-- Price Section -->
+					<div class="bg-[#E3BE1D]/10 rounded-lg p-4 border border-[#E3BE1D]/20">
+						<h4 class="text-sm font-semibold text-[#B8940F] mb-3">Harga Trip</h4>
+						<div>
+							<label for="price" class="block text-sm font-medium text-gray-700 mb-1">
+								Harga Per Pax
+							</label>
+							<input 
+								type="number" 
+								id="price"
+								bind:value={TripForm.price}
+								min="0"
+								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E3BE1D] focus:border-transparent transition-colors"
+								placeholder="0"
+							/>
+						</div>
+					</div>
+
+					<div>
+						<label for="description" class="block text-sm font-medium text-gray-700 mb-1">
+							Description Trip
+						</label>
+						<textarea 
+							id="description"
+							bind:value={TripForm.description}
+							rows="3"
+							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#462365] focus:border-transparent transition-colors"
+							placeholder="Masukkan Description Trip Pelancongan..."
+						></textarea>
+					</div>
+
+					<div class="flex items-center">
+						<input 
+							type="checkbox" 
+							id="Trip-active"
+							bind:checked={TripForm.isActive}
+							class="rounded border-gray-300 text-[#462365] focus:ring-[#462365]"
+						/>
+						<label for="Trip-active" class="ml-2 text-sm text-gray-700">
+							Aktif
+						</label>
+					</div>
+
+					<button 
+						type="submit"
+						class="w-full btn-secondary"
+					>
+						Tambah Trip Pelancongan
+					</button>
+				</form>
+			</div>
 		</div>
 
 		<!-- Summary -->
 		<div class="space-y-6">
 			<!-- Stats Cards -->
 			<div class="grid grid-cols-2 gap-4">
-				<div class="stat-card">
-					<div class="flex items-center justify-between">
-						<div>
-							<p class="text-sm font-medium text-gray-600">Total Tour</p>
-							<p class="text-2xl font-bold text-gray-900">{outboundTours.length}</p>
-						</div>
-						<div class="p-3 bg-indigo-600 rounded-lg">
-							<Icon name="plane" size="20" color="white" />
+				<div class="card-primary">
+					<div class="p-4">
+						<div class="flex items-center justify-between">
+							<div>
+								<p class="text-sm font-medium text-gray-600">Total Trip</p>
+								<p class="text-2xl font-bold text-gray-900">{PelanconganTrips.length}</p>
+							</div>
+							<div class="p-3 bg-[#462365] rounded-lg">
+								<Icon name="plane" size="20" color="white" />
+							</div>
 						</div>
 					</div>
 				</div>
-				<div class="stat-card-success">
-					<div class="flex items-center justify-between">
-						<div>
-							<p class="text-sm font-medium text-gray-600">Tour Aktif</p>
-							<p class="text-2xl font-bold text-gray-900">{outboundTours.filter(t => t.isActive).length}</p>
-						</div>
-						<div class="p-3 bg-green-500 rounded-lg">
-							<Icon name="trending-up" size="20" color="white" />
+				<div class="card-primary">
+					<div class="p-4">
+						<div class="flex items-center justify-between">
+							<div>
+								<p class="text-sm font-medium text-gray-600">Trip Aktif</p>
+								<p class="text-2xl font-bold text-gray-900">{PelanconganTrips.filter(t => t.isActive).length}</p>
+							</div>
+							<div class="p-3 bg-[#E3BE1D] rounded-lg">
+								<Icon name="Trendding-up" size="20" color="#1F2937" />
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 
 			<!-- Destinasi Tersedia -->
-			<div class="card">
-				<h3 class="text-lg font-semibold text-gray-900 mb-4">Destinasi Tersedia</h3>
-				<div class="space-y-2">
-					{#each availableDestinations.slice(0, 5) as destination}
-						<div class="flex items-center">
-							<Icon name="map-pin" size="14" color="#6b7280" />
-							<span class="text-sm text-gray-600 ml-2">{destination}</span>
-						</div>
-					{/each}
-					{#if availableDestinations.length > 5}
-						<p class="text-xs text-gray-500 mt-2">Dan {availableDestinations.length - 5} destinasi lainnya...</p>
-					{/if}
+			<div class="card-primary">
+				<div class="p-6">
+					<h3 class="text-lg font-semibold text-gray-900 mb-4">Destinasi Tersedia</h3>
+					<div class="space-y-2">
+						{#each availableDestinations.slice(0, 5) as destination}
+							<div class="flex items-center">
+								<Icon name="map-pin" size="14" color="#6b7280" />
+								<span class="text-sm text-gray-600 ml-2">{destination}</span>
+							</div>
+						{/each}
+						{#if availableDestinations.length > 5}
+							<p class="text-xs text-gray-500 mt-2">Dan {availableDestinations.length - 5} destinasi lainnya...</p>
+						{/if}
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-
 </div>
 
 <!-- Modal Tambah Destinasi -->
@@ -422,7 +426,7 @@
 					<h3 class="text-lg font-semibold text-gray-900">Tambah Destinasi Baru</h3>
 					<button 
 						on:click={closeAddDestinationModal}
-						class="text-gray-400 hover:text-gray-600"
+						class="text-gray-400 hover:text-gray-600 transition-colors"
 						aria-label="Tutup modal"
 					>
 						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -440,7 +444,7 @@
 							type="text" 
 							id="new-destination-name"
 							bind:value={newDestinationForm.name}
-							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#462365] focus:border-transparent transition-colors"
 							placeholder="Contoh: Hanoi - Vietnam"
 							required
 						/>
@@ -448,14 +452,14 @@
 
 					<div>
 						<label for="new-destination-description" class="block text-sm font-medium text-gray-700 mb-1">
-							Deskripsi (Opsional)
+							Description (Opsional)
 						</label>
 						<textarea 
 							id="new-destination-description"
 							bind:value={newDestinationForm.description}
 							rows="3"
-							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-							placeholder="Deskripsi singkat tentang destinasi..."
+							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#462365] focus:border-transparent transition-colors"
+							placeholder="Description singkat tentang destinasi..."
 						></textarea>
 					</div>
 
@@ -469,7 +473,7 @@
 						</button>
 						<button 
 							type="submit"
-							class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors"
+							class="btn-secondary"
 						>
 							Tambah Destinasi
 						</button>

@@ -6,7 +6,7 @@
 	let stats = {
 		totalCustomers: 1247,
 		umrahCustomers: 892,
-		outboundCustomers: 355,
+		PelanconganCustomers: 355,
 		popularDestinations: 8,
 		growthRate: 12.5,
 		lastMonthGrowth: -2.3
@@ -27,7 +27,7 @@
 			id: 2,
 			name: "Siti Nurhaliza",
 			email: "siti.nurhaliza@email.com",
-			type: "Outbound",
+			type: "Pelancongan",
 			destination: "Turki",
 			status: "Pending",
 			date: "2024-01-14"
@@ -45,8 +45,8 @@
 			id: 4,
 			name: "Dewi Sartika",
 			email: "dewi.sartika@email.com",
-			type: "Outbound",
-			destination: "Eropa",
+			type: "Pelancongan",
+			destination: "Eropah",
 			status: "Confirmed",
 			date: "2024-01-12"
 		},
@@ -61,29 +61,29 @@
 		}
 	];
 
-	// Data destinasi terpopuler
+	// Data destinasi terPopular
 	let popularDestinations = [
 		{ name: "Makkah & Madinah", customers: 892, percentage: 71.5, type: "Umrah" },
-		{ name: "Turki", customers: 156, percentage: 12.5, type: "Outbound" },
-		{ name: "Eropa", customers: 98, percentage: 7.9, type: "Outbound" },
-		{ name: "Jepang", customers: 67, percentage: 5.4, type: "Outbound" },
-		{ name: "Singapura", customers: 34, percentage: 2.7, type: "Outbound" }
+		{ name: "Turki", customers: 156, percentage: 12.5, type: "Pelancongan" },
+		{ name: "Eropah", customers: 98, percentage: 7.9, type: "Pelancongan" },
+		{ name: "Jepun", customers: 67, percentage: 5.4, type: "Pelancongan" },
+		{ name: "Singapura", customers: 34, percentage: 2.7, type: "Pelancongan" }
 	];
 
-	// Data tren bulanan
-	let monthlyTrends = [
-		{ month: "Jan", umrah: 45, outbound: 23 },
-		{ month: "Feb", umrah: 52, outbound: 28 },
-		{ month: "Mar", umrah: 48, outbound: 31 },
-		{ month: "Apr", umrah: 61, outbound: 35 },
-		{ month: "Mei", umrah: 55, outbound: 42 },
-		{ month: "Jun", umrah: 67, outbound: 38 },
-		{ month: "Jul", umrah: 73, outbound: 45 },
-		{ month: "Ags", umrah: 68, outbound: 52 },
-		{ month: "Sep", umrah: 82, outbound: 48 },
-		{ month: "Okt", umrah: 76, outbound: 55 },
-		{ month: "Nov", umrah: 89, outbound: 62 },
-		{ month: "Des", umrah: 95, outbound: 68 }
+	// Data Trend bulanan
+	let monthlyTrendds = [
+		{ month: "Jan", umrah: 45, Pelancongan: 23 },
+		{ month: "Feb", umrah: 52, Pelancongan: 28 },
+		{ month: "Mar", umrah: 48, Pelancongan: 31 },
+		{ month: "Apr", umrah: 61, Pelancongan: 35 },
+		{ month: "Mei", umrah: 55, Pelancongan: 42 },
+		{ month: "Jun", umrah: 67, Pelancongan: 38 },
+		{ month: "Jul", umrah: 73, Pelancongan: 45 },
+		{ month: "Ags", umrah: 68, Pelancongan: 52 },
+		{ month: "Sep", umrah: 82, Pelancongan: 48 },
+		{ month: "Okt", umrah: 76, Pelancongan: 55 },
+		{ month: "Nov", umrah: 89, Pelancongan: 62 },
+		{ month: "Des", umrah: 95, Pelancongan: 68 }
 	];
 
 	function getStatusColor(status) {
@@ -100,7 +100,7 @@
 	}
 
 	function formatDate(dateString) {
-		return new Date(dateString).toLocaleDateString('id-ID', {
+		return new Date(dateString).toLocaleDateString('ms-MY', {
 			day: 'numeric',
 			month: 'short',
 			year: 'numeric'
@@ -127,7 +127,7 @@
 				<div class="flex items-center space-x-4">
 					<div class="text-right">
 						<p class="text-sm text-gray-600">Hari ini</p>
-						<p class="text-lg font-semibold text-gray-900">{new Date().toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+						<p class="text-lg font-semibold text-gray-900">{new Date().toLocaleDateString('ms-MY', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
 					</div>
 					<a href="/admin" class="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition-colors">
 						Admin Panel
@@ -177,12 +177,12 @@
 				</div>
 			</div>
 
-			<!-- Pelanggan Outbound -->
+			<!-- Pelanggan Pelancongan -->
 			<div class="stat-card-warning">
 				<div class="flex items-center justify-between">
 					<div>
-						<p class="text-sm font-medium text-gray-600">Pelanggan Outbound</p>
-						<p class="text-3xl font-bold text-gray-900">{stats.outboundCustomers.toLocaleString()}</p>
+						<p class="text-sm font-medium text-gray-600">Pelanggan Pelancongan</p>
+						<p class="text-3xl font-bold text-gray-900">{stats.PelanconganCustomers.toLocaleString()}</p>
 						<div class="flex items-center mt-2">
 							<Icon name="arrow-down-right" size="16" color="#dc2626" />
 							<span class="text-sm text-red-600 font-medium">{stats.lastMonthGrowth}%</span>
@@ -195,7 +195,7 @@
 				</div>
 			</div>
 
-			<!-- Destinasi Populer -->
+			<!-- Destinasi Popular -->
 			<div class="stat-card-purple">
 				<div class="flex items-center justify-between">
 					<div>
@@ -203,12 +203,12 @@
 						<p class="text-3xl font-bold text-gray-900">{stats.popularDestinations}</p>
 						<div class="flex items-center mt-2">
 							<Icon name="star" size="16" color="#622369" />
-							<span class="text-sm text-purple-600 font-medium">Terpopuler</span>
+							<span class="text-sm text-purple-600 font-medium">TerPopular</span>
 							<span class="text-sm text-gray-500 ml-1">Makkah & Madinah</span>
 						</div>
 					</div>
 					<div class="p-3 bg-purple-600 rounded-lg">
-						<Icon name="trending-up" size="24" color="white" />
+						<Icon name="Trendding-up" size="24" color="white" />
 					</div>
 				</div>
 			</div>
@@ -216,10 +216,10 @@
 
 		<!-- Charts dan Data -->
 		<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-			<!-- Grafik Tren Bulanan -->
+			<!-- Grafik Trend Bulanan -->
 			<div class="card">
 				<div class="flex items-center justify-between mb-6">
-					<h3 class="text-lg font-semibold text-gray-900">Tren Bulanan</h3>
+					<h3 class="text-lg font-semibold text-gray-900">Trend Bulanan</h3>
 					<div class="flex items-center space-x-4">
 						<div class="flex items-center">
 							<div class="w-3 h-3 bg-purple-600 rounded-full mr-2"></div>
@@ -227,28 +227,28 @@
 						</div>
 						<div class="flex items-center">
 							<div class="w-3 h-3 bg-indigo-500 rounded-full mr-2"></div>
-							<span class="text-sm text-gray-600">Outbound</span>
+							<span class="text-sm text-gray-600">Pelancongan</span>
 						</div>
 					</div>
 				</div>
 				<div class="relative h-64 bg-gray-50 rounded-lg p-4">
 					<div class="h-full flex items-end justify-between space-x-1">
-						{#each monthlyTrends as trend}
+						{#each monthlyTrendds as Trendd}
 							<div class="flex flex-col items-center flex-1 h-full">
 								<div class="w-full flex flex-col items-center justify-end h-48 space-y-1">
 									<!-- Batasi tinggi maksimal menjadi 180px (90% dari 200px) -->
 									<div 
 										class="bg-purple-600 rounded-sm w-full max-w-8" 
-										style="height: {Math.min(trend.umrah * 1.8, 90)}px;"
-										title="Umrah: {trend.umrah}"
+										style="height: {Math.min(Trendd.umrah * 1.8, 90)}px;"
+										title="Umrah: {Trendd.umrah}"
 									></div>
 									<div 
 										class="bg-indigo-500 rounded-sm w-full max-w-8" 
-										style="height: {Math.min(trend.outbound * 1.8, 90)}px;"
-										title="Outbound: {trend.outbound}"
+										style="height: {Math.min(Trendd.Pelancongan * 1.8, 90)}px;"
+										title="Pelancongan: {Trendd.Pelancongan}"
 									></div>
 								</div>
-								<span class="text-xs text-gray-500 mt-2 font-medium">{trend.month}</span>
+								<span class="text-xs text-gray-500 mt-2 font-medium">{Trendd.month}</span>
 							</div>
 						{/each}
 					</div>
@@ -269,9 +269,9 @@
 				</div>
 			</div>
 
-			<!-- Destinasi Terpopuler -->
+			<!-- Destinasi TerPopular -->
 			<div class="card">
-				<h3 class="text-lg font-semibold text-gray-900 mb-6">Destinasi Terpopuler</h3>
+				<h3 class="text-lg font-semibold text-gray-900 mb-6">Destinasi TerPopular</h3>
 				<div class="space-y-4">
 					{#each popularDestinations as destination}
 						<div class="flex items-center justify-between">

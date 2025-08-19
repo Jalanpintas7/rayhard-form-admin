@@ -1,7 +1,7 @@
 <script>
 	import Icon from '../../../lib/icons.svelte';
 
-	// Data destinasi outbound
+	// Data destinasi Pelancongan
 	let availableDestinations = [
 		'Tokyo - Japan',
 		'Paris - France',
@@ -15,17 +15,17 @@
 		'New York - USA'
 	];
 
-	// Data outbound tours yang sudah dibuat
-	let outboundTours = [
+	// Data Pelancongan Trips yang sudah dibuat
+	let PelanconganTrips = [
 		{
 			id: 1,
 			destination: 'Istanbul - Turkey',
-			name: '10 Oktober - 12 Desember',
+			name: '10 Oktober - 12 Disember',
 			startDate: '2024-10-10',
 			endDate: '2024-12-12',
-			branch: 'Jakarta Pusat',
-			price: 15000000,
-			description: 'Tour warisan budaya Istanbul musim gugur',
+			branch: 'Kuala Lumpur',
+			price: 4350,
+			description: 'Trip warisan budaya Istanbul musim gugur',
 			isActive: true
 		},
 		{
@@ -34,31 +34,31 @@
 			name: '15 Januari - 28 Februari',
 			startDate: '2025-01-15',
 			endDate: '2025-02-28',
-			branch: 'Bandung',
-			price: 18000000,
-			description: 'Tour musim dingin Istanbul',
+			branch: 'Shah Alam',
+			price: 5220,
+			description: 'Trip musim dingin Istanbul',
 			isActive: true
 		},
 		{
 			id: 3,
 			destination: 'Tokyo - Japan',
-			name: '5 Maret - 20 Maret',
+			name: '5 Mac - 20 Mac',
 			startDate: '2025-03-05',
 			endDate: '2025-03-20',
-			branch: 'Jakarta Pusat',
-			price: 25000000,
-			description: 'Tour Sakura Tokyo musim semi',
+			branch: 'Kuantan',
+			price: 7250,
+			description: 'Trip Sakura Tokyo musim semi',
 			isActive: true
 		},
 		{
 			id: 4,
 			destination: 'Paris - France',
-			name: '1 Juni - 15 Juni',
+			name: '1 Jun - 15 Jun',
 			startDate: '2025-06-01',
 			endDate: '2025-06-15',
-			branch: 'Surabaya',
-			price: 35000000,
-			description: 'Tour Paris musim panas',
+			branch: 'Melaka',
+			price: 10150,
+			description: 'Trip Paris musim panas',
 			isActive: false
 		},
 		{
@@ -67,9 +67,9 @@
 			name: '10 April - 25 April',
 			startDate: '2025-04-10',
 			endDate: '2025-04-25',
-			branch: 'Jakarta Selatan',
-			price: 22000000,
-			description: 'Tour Seoul musim semi',
+			branch: 'Seremban',
+			price: 6380,
+			description: 'Trip Seoul musim semi',
 			isActive: true
 		}
 	];
@@ -77,38 +77,38 @@
 	// Filters
 	let searchTerm = '';
 	let selectedDestination = '';
-	let selectedBranch = '';
+	let selectedCawangan = '';
 	let selectedStatus = '';
 
-	// Filter tours
-	$: filteredTours = outboundTours.filter(tour => {
-		const matchesSearch = tour.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-							 tour.destination.toLowerCase().includes(searchTerm.toLowerCase()) ||
-							 tour.branch.toLowerCase().includes(searchTerm.toLowerCase());
-		const matchesDestination = !selectedDestination || tour.destination === selectedDestination;
-		const matchesBranch = !selectedBranch || tour.branch === selectedBranch;
-		const matchesStatus = !selectedStatus || (selectedStatus === 'active' ? tour.isActive : !tour.isActive);
+	// Filter Trips
+	$: filteredTrips = PelanconganTrips.filter(Trip => {
+		const matchesSearch = Trip.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+							 Trip.destination.toLowerCase().includes(searchTerm.toLowerCase()) ||
+							 Trip.branch.toLowerCase().includes(searchTerm.toLowerCase());
+		const matchesDestination = !selectedDestination || Trip.destination === selectedDestination;
+		const matchesCawangan = !selectedCawangan || Trip.branch === selectedCawangan;
+		const matchesStatus = !selectedStatus || (selectedStatus === 'active' ? Trip.isActive : !Trip.isActive);
 		
-		return matchesSearch && matchesDestination && matchesBranch && matchesStatus;
+		return matchesSearch && matchesDestination && matchesCawangan && matchesStatus;
 	});
 
-	// Group tours by destination for display
-	$: toursByDestination = filteredTours.reduce((acc, tour) => {
-		if (!acc[tour.destination]) {
-			acc[tour.destination] = [];
+	// Group Trips by destination for display
+	$: TripsByDestination = filteredTrips.reduce((acc, Trip) => {
+		if (!acc[Trip.destination]) {
+			acc[Trip.destination] = [];
 		}
-		acc[tour.destination].push(tour);
+		acc[Trip.destination].push(Trip);
 		return acc;
 	}, {});
 
-	function deleteTour(id) {
-		if (confirm('Apakah Anda yakin ingin menghapus tour ini?')) {
-			outboundTours = outboundTours.filter(item => item.id !== id);
+	function deleteTrip(id) {
+		if (confirm('Apakah Anda yakin ingin menghapus Trip ini?')) {
+			PelanconganTrips = PelanconganTrips.filter(item => item.id !== id);
 		}
 	}
 
-	function toggleTourStatus(id) {
-		outboundTours = outboundTours.map(item => {
+	function toggleTripStatus(id) {
+		PelanconganTrips = PelanconganTrips.map(item => {
 			if (item.id === id) {
 				return { ...item, isActive: !item.isActive };
 			}
@@ -117,7 +117,7 @@
 	}
 
 	function formatDate(dateString) {
-		return new Date(dateString).toLocaleDateString('id-ID', {
+		return new Date(dateString).toLocaleDateString('ms-MY', {
 			day: 'numeric',
 			month: 'long',
 			year: 'numeric'
@@ -125,16 +125,16 @@
 	}
 
 	function formatPrice(price) {
-		return new Intl.NumberFormat('id-ID', {
+		return new Intl.NumberFormat('ms-MY', {
 			style: 'currency',
-			currency: 'IDR',
+			currency: 'MYR',
 			minimumFractionDigits: 0
 		}).format(price);
 	}
 </script>
 
 <svelte:head>
-	<title>Data Outbound - Rayhar Travel Admin</title>
+	<title>Data Pelancongan - Rayhar Travel Admin</title>
 </svelte:head>
 
 <div>
@@ -142,138 +142,146 @@
 	<div class="mb-8">
 		<div class="flex items-center justify-between">
 			<div>
-				<h1 class="text-3xl font-bold text-gray-900">Data Outbound</h1>
-				<p class="text-gray-600 mt-1">Kelola data tour outbound berdasarkan destinasi dan periode</p>
+				<h1 class="text-3xl font-bold text-gray-900">Data Pelancongan</h1>
+				<p class="text-gray-600 mt-1">Management data Trip Pelancongan berdasarkan destinasi dan Tempoh</p>
 			</div>
-			<a href="/admin/destinations" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors">
-				Tambah Tour Outbound
+			<a href="/admin/destinations" class="btn-secondary">
+				Tambah Trip Pelancongan
 			</a>
 		</div>
 	</div>
 
 	<!-- Filters -->
-	<div class="card mb-6">
-		<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-			<div>
-				<label for="search" class="block text-sm font-medium text-gray-700 mb-1">Cari</label>
-				<input 
-					type="text" 
-					id="search"
-					bind:value={searchTerm}
-					placeholder="Cari tour, destinasi, atau branch..."
-					class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-				/>
-			</div>
-			<div>
-				<label for="destination-filter" class="block text-sm font-medium text-gray-700 mb-1">Destinasi</label>
-				<select 
-					id="destination-filter"
-					bind:value={selectedDestination}
-					class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-				>
-					<option value="">Semua Destinasi</option>
-					{#each availableDestinations as destination}
-						<option value={destination}>{destination}</option>
-					{/each}
-				</select>
-			</div>
-			<div>
-				<label for="branch-filter" class="block text-sm font-medium text-gray-700 mb-1">Branch</label>
-				<select 
-					id="branch-filter"
-					bind:value={selectedBranch}
-					class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-				>
-					<option value="">Semua Branch</option>
-					<option value="Jakarta Pusat">Jakarta Pusat</option>
-					<option value="Jakarta Selatan">Jakarta Selatan</option>
-					<option value="Bandung">Bandung</option>
-					<option value="Surabaya">Surabaya</option>
-					<option value="Medan">Medan</option>
-					<option value="Makassar">Makassar</option>
-					<option value="Palembang">Palembang</option>
-					<option value="Semarang">Semarang</option>
-				</select>
-			</div>
-			<div>
-				<label for="status-filter" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
-				<select 
-					id="status-filter"
-					bind:value={selectedStatus}
-					class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-				>
-					<option value="">Semua Status</option>
-					<option value="active">Aktif</option>
-					<option value="inactive">Nonaktif</option>
-				</select>
+	<div class="card-primary mb-6">
+		<div class="p-6">
+			<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+				<div>
+					<label for="search" class="block text-sm font-medium text-gray-700 mb-1">Cari</label>
+					<input 
+						type="text" 
+						id="search"
+						bind:value={searchTerm}
+						placeholder="Cari Trip, destinasi, atau branch..."
+						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#462365] focus:border-transparent transition-colors"
+					/>
+				</div>
+				<div>
+					<label for="destination-filter" class="block text-sm font-medium text-gray-700 mb-1">Destinasi</label>
+					<select 
+						id="destination-filter"
+						bind:value={selectedDestination}
+						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#462365] focus:border-transparent transition-colors"
+					>
+						<option value="">Semua Destinasi</option>
+						{#each availableDestinations as destination}
+							<option value={destination}>{destination}</option>
+						{/each}
+					</select>
+				</div>
+				<div>
+					<label for="branch-filter" class="block text-sm font-medium text-gray-700 mb-1">Cawangan</label>
+					<select 
+						id="branch-filter"
+						bind:value={selectedCawangan}
+						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#462365] focus:border-transparent transition-colors"
+					>
+						<option value="">Semua Cawangan</option>
+						<option value="Kuala Lumpur">Kuala Lumpur</option>
+						<option value="Shah Alam">Shah Alam</option>
+						<option value="Kuantan">Kuantan</option>
+						<option value="Melaka">Melaka</option>
+						<option value="Bandar Baru Bangi">Bandar Baru Bangi</option>
+						<option value="Seremban">Seremban</option>
+						<option value="Batu Pahat">Batu Pahat</option>
+						<option value="Kota Kinabalu">Kota Kinabalu</option>
+						<option value="Kota Bharu">Kota Bharu</option>
+						<option value="Kota Tinggi">Kota Tinggi</option>
+					</select>
+				</div>
+				<div>
+					<label for="status-filter" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+					<select 
+						id="status-filter"
+						bind:value={selectedStatus}
+						class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#462365] focus:border-transparent transition-colors"
+					>
+						<option value="">Semua Status</option>
+						<option value="active">Aktif</option>
+						<option value="inactive">Nonaktif</option>
+					</select>
+				</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- Tours by Destination -->
+	<!-- Trips by Destination -->
 	<div class="space-y-6">
-		{#each Object.entries(toursByDestination) as [destination, tours]}
-			<div class="card">
-				<div class="flex items-center justify-between mb-4">
-					<h3 class="text-lg font-semibold text-gray-900 flex items-center">
-						<Icon name="map-pin" size="20" color="#4f46e5" class_name="mr-2" />
-						{destination}
-					</h3>
-					<span class="text-sm text-gray-500">{tours.length} tour</span>
-				</div>
-				
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-					{#each tours as tour}
-						<div class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
-							<div class="flex justify-between items-start mb-3">
-								<h4 class="font-medium text-gray-900">{tour.name}</h4>
-								<button 
-									on:click={() => toggleTourStatus(tour.id)}
-									class="inline-flex px-2 py-1 text-xs font-semibold rounded-full cursor-pointer {tour.isActive ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}"
-								>
-									{tour.isActive ? 'Aktif' : 'Nonaktif'}
-								</button>
+		{#each Object.entries(TripsByDestination) as [destination, Trips]}
+			<div class="card-primary">
+				<div class="p-6">
+					<div class="flex items-center justify-between mb-4">
+						<h3 class="text-lg font-semibold text-gray-900 flex items-center">
+							<Icon name="map-pin" size="20" color="#462365" class_name="mr-2" />
+							{destination}
+						</h3>
+						<span class="text-sm text-gray-500">{Trips.length} Trip</span>
+					</div>
+					
+					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+						{#each Trips as Trip}
+							<div class="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
+								<div class="flex justify-between items-start mb-3">
+									<h4 class="font-medium text-gray-900">{Trip.name}</h4>
+									<button 
+										on:click={() => toggleTripStatus(Trip.id)}
+										class="inline-flex px-2 py-1 text-xs font-semibold rounded-full cursor-pointer {Trip.isActive ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'} transition-opacity"
+									>
+										{Trip.isActive ? 'Aktif' : 'Nonaktif'}
+									</button>
+								</div>
+								
+								<div class="space-y-2 text-sm text-gray-600">
+									<p><strong>Cawangan:</strong> {Trip.branch}</p>
+									<p><strong>Tempoh:</strong> {formatDate(Trip.startDate)} - {formatDate(Trip.endDate)}</p>
+									{#if Trip.price}
+										<p><strong>Harga:</strong> {formatPrice(Trip.price)} / Pax</p>
+									{/if}
+									{#if Trip.description}
+										<p class="text-gray-500">{Trip.description}</p>
+									{/if}
+								</div>
+								
+								<div class="flex justify-end mt-3">
+									<button 
+										on:click={() => deleteTrip(Trip.id)}
+										class="text-red-600 hover:text-red-800 transition-colors"
+										aria-label="Hapus Trip"
+									>
+										<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+										</svg>
+									</button>
+								</div>
 							</div>
-							
-							<div class="space-y-2 text-sm text-gray-600">
-								<p><strong>Branch:</strong> {tour.branch}</p>
-								<p><strong>Periode:</strong> {formatDate(tour.startDate)} - {formatDate(tour.endDate)}</p>
-								{#if tour.price}
-									<p><strong>Harga:</strong> {formatPrice(tour.price)} / orang</p>
-								{/if}
-								{#if tour.description}
-									<p class="text-gray-500">{tour.description}</p>
-								{/if}
-							</div>
-							
-							<div class="flex justify-end mt-3">
-								<button 
-									on:click={() => deleteTour(tour.id)}
-									class="text-red-600 hover:text-red-800"
-									aria-label="Hapus tour"
-								>
-									<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-									</svg>
-								</button>
-							</div>
-						</div>
-					{/each}
+						{/each}
+					</div>
 				</div>
 			</div>
 		{/each}
 
-		{#if Object.keys(toursByDestination).length === 0}
-			<div class="card text-center py-12 text-gray-500">
-				<Icon name="plane" size="48" color="#9ca3af" />
-				<h3 class="mt-2 text-sm font-medium text-gray-900">Tidak ada tour outbound</h3>
-				<p class="mt-1 text-sm text-gray-500">
-					{searchTerm || selectedDestination || selectedBranch || selectedStatus ? 'Tidak ada tour yang sesuai dengan filter.' : 'Belum ada tour outbound yang dibuat.'}
-				</p>
-				<div class="mt-6">
-					<a href="/admin/destinations" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors">
-						Buat Tour Baru
-					</a>
+		{#if Object.keys(TripsByDestination).length === 0}
+			<div class="card-primary text-center py-12 text-gray-500">
+				<div class="p-6">
+					<Icon name="plane" size="48" color="#9ca3af" />
+					<h3 class="mt-2 text-sm font-medium text-gray-900">Tidak ada Trip Pelancongan</h3>
+					<p class="mt-1 text-sm text-gray-500">
+						{searchTerm || selectedDestination || selectedCawangan || selectedStatus ? 'Tidak ada Trip yang sesuai dengan filter.' : 'Belum ada Trip Pelancongan yang dibuat.'}
+					</p>
+					<div class="mt-6">
+						<a href="/admin/destinations" class="btn-secondary">
+							Buat Trip Baru
+						</a>
+					</div>
 				</div>
 			</div>
 		{/if}
