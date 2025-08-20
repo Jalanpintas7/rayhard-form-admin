@@ -83,7 +83,7 @@
 	// Status Management
 	let statusList = [
 		{ id: 1, name: 'Aktif', color: '#10B981', description: 'Status untuk pelanggan aktif' },
-		{ id: 2, name: 'Pending', color: '#F59E0B', description: 'Status untuk pelanggan menunggu konfirmasi' },
+		{ id: 2, name: 'Pending', color: '#FFFFFF', description: 'Status untuk pelanggan menunggu konfirmasi' },
 		{ id: 3, name: 'Tidak Aktif', color: '#EF4444', description: 'Status untuk pelanggan tidak aktif' },
 		{ id: 4, name: 'Dibatalkan', color: '#6B7280', description: 'Status untuk pelanggan yang dibatalkan' },
 		{ id: 5, name: 'Selesai', color: '#8B5CF6', description: 'Status untuk pelanggan yang telah selesai' },
@@ -119,7 +119,7 @@
 	
 	const colorOptions = [
 		{ value: '#10B981', label: 'Hijau', preview: '#10B981' },
-		{ value: '#F59E0B', label: 'Kuning', preview: '#F59E0B' },
+		{ value: '#FFFFFF', label: 'Putih', preview: '#FFFFFF' },
 		{ value: '#EF4444', label: 'Merah', preview: '#EF4444' },
 		{ value: '#6B7280', label: 'Abu-abu', preview: '#6B7280' },
 		{ value: '#8B5CF6', label: 'Ungu', preview: '#8B5CF6' },

@@ -383,7 +383,7 @@
 								<p class="text-sm font-medium text-gray-600">Trip Aktif</p>
 								<p class="text-2xl font-bold text-gray-900">{PelanconganTrips.filter(t => t.isActive).length}</p>
 							</div>
-							<div class="p-3 bg-[#FFF00C] rounded-lg">
+							<div class="p-3 bg-secondary-100 border border-secondary-200 rounded-lg">
 								<Icon name="Trendding-up" size="20" color="#1F2937" />
 							</div>
 						</div>

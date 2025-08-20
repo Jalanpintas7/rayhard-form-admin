@@ -7,7 +7,7 @@
 	export let growthText = '';
 	export let icon = '';
 	export let iconBgColor = 'bg-gradient-to-r from-primary-600 to-[#AC2EAC]';
-	export let iconColor = '#FFF00C';
+	export let iconColor = 'white';
 	export let growthColor = 'text-green-600';
 	export let growthIcon = 'arrow-up-right';
 </script>

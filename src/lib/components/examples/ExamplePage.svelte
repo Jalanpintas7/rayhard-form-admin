@@ -119,8 +119,8 @@
 			growth={0}
 			growthText="Makkah & Madinah"
 			icon="trending-up"
-			iconBgColor="bg-[#FFF00C]"
-			growthColor="text-[#FFF00C]"
+			iconBgColor="bg-white"
+			growthColor="text-gray-600"
 			growthIcon="star"
 		/>
 	</div>

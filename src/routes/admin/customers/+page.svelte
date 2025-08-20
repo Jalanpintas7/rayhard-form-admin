@@ -90,7 +90,7 @@
 		{ value: 'Kuching', label: 'Kuching' }
 	];
 	const typeOptions = [
-		{ value: '', label: 'Semua Tipe' },
+		{ value: '', label: 'Semua Pakej' },
 		{ value: 'Umrah', label: 'Umrah' },
 		{ value: 'Pelancongan', label: 'Pelancongan' }
 	];
@@ -179,7 +179,7 @@
 	<div class="bg-white rounded-xl shadow-sm border border-gray-100 mb-6">
 		<div class="p-6">
 			<div class="flex items-center justify-between mb-4">
-				<h3 class="text-lg font-semibold text-gray-900">Penapis</h3>
+				<h3 class="text-lg font-semibold text-gray-900">Filter</h3>
 				<button 
 					on:click={clearFilters}
 					class="text-sm text-primary-600 hover:text-primary-700 font-medium transition-colors"
@@ -219,11 +219,11 @@
 				
 				<!-- Type -->
 				<div>
-					<label class="block text-sm font-medium text-gray-700 mb-2">Tipe</label>
+					<label class="block text-sm font-medium text-gray-700 mb-2">Jenis Pakej</label>
 					<Dropdown
 						options={typeOptions}
 						bind:value={selectedType}
-						placeholder="Semua Tipe"
+						placeholder="Semua Pakej"
 						searchable={false}
 						size="medium"
 						variant="default"
@@ -280,7 +280,7 @@
 			{#if filteredCustomers.length > 0}
 				<!-- Desktop Table -->
 				<div class="hidden lg:block">
-					<div class="overflow-hidden rounded-lg border border-gray-200">
+					<div class="overflow-x-auto rounded-lg border border-gray-200">
 						<table class="min-w-full divide-y divide-gray-200">
 							<thead class="bg-gradient-to-r from-gray-50 to-gray-100">
 								<tr>

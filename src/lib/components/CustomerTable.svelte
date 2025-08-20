@@ -28,7 +28,7 @@
 		
 		<!-- Desktop Table -->
 		<div class="hidden lg:block">
-			<div class="overflow-hidden rounded-lg border border-gray-200">
+			<div class="overflow-x-auto rounded-lg border border-gray-200">
 				<table class="min-w-full divide-y divide-gray-200">
 					<thead class="bg-gradient-to-r from-gray-50 to-gray-100">
 						<tr>

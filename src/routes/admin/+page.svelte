@@ -64,7 +64,7 @@
 		}
 	];
 
-	// Data destinasi terPopular
+	// Data destinasi Popular
 	let popularDestinations = [
 		{ name: "Makkah & Madinah", customers: 892, percentage: 71.5, type: "Umrah" },
 		{ name: "Turki", customers: 156, percentage: 12.5, type: "Pelancongan" },
@@ -168,7 +168,7 @@
 			type="bar"
 		/>
 
-		<!-- Destinasi TerPopular -->
+		<!-- Destinasi Popular -->
 		<DestinationCard destinations={popularDestinations} />
 	</div>
 

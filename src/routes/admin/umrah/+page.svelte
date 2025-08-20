@@ -271,7 +271,7 @@
 						<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
 							<div class="flex items-center space-x-4">
 								<div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-primary-600 to-[#AC2EAC] flex items-center justify-center">
-									<Icon name="map-pin" size="24" color="#FFF00C" />
+									<Icon name="map-pin" size="24" color="white" />
 								</div>
 								<div>
 									<h3 class="text-xl font-semibold text-gray-900">{season.seasonName}</h3>

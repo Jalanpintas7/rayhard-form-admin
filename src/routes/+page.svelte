@@ -61,7 +61,7 @@
 		}
 	];
 
-	// Data destinasi terPopular
+	// Data destinasi Popular
 	let popularDestinations = [
 		{ name: "Makkah & Madinah", customers: 892, percentage: 71.5, type: "Umrah" },
 		{ name: "Turki", customers: 156, percentage: 12.5, type: "Pelancongan" },
@@ -89,7 +89,7 @@
 	function getStatusColor(status) {
 		switch(status) {
 			case 'Confirmed': return 'bg-green-100 text-green-800';
-			case 'Pending': return 'bg-yellow-100 text-yellow-800';
+			case 'Pending': return 'bg-secondary-100 text-[#9A8F00]';
 			case 'Cancelled': return 'bg-red-100 text-red-800';
 			default: return 'bg-gray-100 text-gray-800';
 		}
@@ -155,7 +155,7 @@
 						</div>
 					</div>
 					<div class="p-3 bg-primary-600 rounded-lg">
-						<Icon name="users" size="24" color="#FFF00C" />
+						<Icon name="users" size="24" color="white" />
 					</div>
 				</div>
 			</div>
@@ -172,8 +172,8 @@
 							<span class="text-sm text-gray-500 ml-1">dari bulan lalu</span>
 						</div>
 					</div>
-					<div class="p-3 bg-green-500 rounded-lg">
-						<Icon name="map-pin" size="24" color="#FFF00C" />
+					<div class="p-3 bg-[#921E8D] rounded-lg">
+						<Icon name="map-pin" size="24" color="white" />
 					</div>
 				</div>
 			</div>
@@ -190,8 +190,8 @@
 							<span class="text-sm text-gray-500 ml-1">dari bulan lalu</span>
 						</div>
 					</div>
-					<div class="p-3 bg-amber-500 rounded-lg">
-						<Icon name="plane" size="24" color="#FFF00C" />
+					<div class="p-3 bg-[#921E8D] rounded-lg">
+						<Icon name="plane" size="24" color="white" />
 					</div>
 				</div>
 			</div>
@@ -204,12 +204,12 @@
 						<p class="text-3xl font-bold text-gray-900">{stats.popularDestinations}</p>
 						<div class="flex items-center mt-2">
 							<Icon name="star" size="16" color="#622369" />
-							<span class="text-sm text-primary-600 font-medium">TerPopular</span>
+							<span class="text-sm text-primary-600 font-medium">Popular</span>
 							<span class="text-sm text-gray-500 ml-1">Makkah & Madinah</span>
 						</div>
 					</div>
 					<div class="p-3 bg-primary-600 rounded-lg">
-						<Icon name="Trendding-up" size="24" color="#FFF00C" />
+						<Icon name="Trendding-up" size="24" color="white" />
 					</div>
 				</div>
 			</div>
@@ -270,15 +270,15 @@
 				</div>
 			</div>
 
-			<!-- Destinasi TerPopular -->
+			<!-- Destinasi Popular -->
 			<div class="card-primary">
-				<h3 class="text-lg font-semibold text-gray-900 mb-6">Destinasi TerPopular</h3>
+				<h3 class="text-lg font-semibold text-gray-900 mb-6">Destinasi Popular</h3>
 				<div class="space-y-4">
 					{#each popularDestinations as destination}
 						<div class="flex items-center justify-between">
 							<div class="flex items-center space-x-3">
 								<div class="w-10 h-10 rounded-full bg-gradient-to-r from-primary-600 to-[#AC2EAC] flex items-center justify-center">
-									<Icon name="map-pin" size="20" color="#FFF00C" />
+									<Icon name="map-pin" size="20" color="white" />
 								</div>
 								<div>
 									<p class="font-medium text-gray-900">{destination.name}</p>
@@ -306,7 +306,7 @@
 					</a>
 				</div>
 				
-				<div class="overflow-hidden rounded-lg border border-gray-200">
+				<div class="overflow-x-auto rounded-lg border border-gray-200">
 					<table class="min-w-full divide-y divide-gray-200">
 						<thead class="bg-gradient-to-r from-gray-50 to-gray-100">
 							<tr>

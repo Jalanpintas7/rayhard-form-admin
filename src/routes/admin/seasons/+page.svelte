@@ -230,7 +230,7 @@
 								<p class="text-sm font-medium text-gray-600">Musim Aktif</p>
 								<p class="text-2xl font-bold text-gray-900">{seasonsData.filter(s => s.status === 'Active').length}</p>
 							</div>
-							<div class="p-3 bg-[#FFF00C] rounded-lg">
+							<div class="p-3 bg-secondary  rounded-lg">
 								<Icon name="Trendding-up" size="20" color="#1F2937" />
 							</div>
 						</div>
@@ -332,7 +332,7 @@
 								<td class="px-6 py-4 whitespace-nowrap">
 									<div class="flex items-center">
 										<div class="w-8 h-8 rounded-full bg-gradient-to-r from-primary-600 to-[#AC2EAC] flex items-center justify-center">
-											<Icon name="map-pin" size="16" color="#FFF00C" />
+											<Icon name="map-pin" size="16" color="white" />
 										</div>
 										<div class="ml-4">
 											<div class="text-sm font-medium text-gray-900">{season.seasonName}</div>
