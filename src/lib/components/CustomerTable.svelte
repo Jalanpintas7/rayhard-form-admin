@@ -33,8 +33,8 @@
 					<thead class="bg-gradient-to-r from-gray-50 to-gray-100">
 						<tr>
 							<th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Pelanggan</th>
-							<th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Tipe</th>
-							<th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Destinasi</th>
+							<th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Pakej</th>
+							<th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Kategori</th>
 							<th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Status</th>
 							<th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Tarikh</th>
 						</tr>

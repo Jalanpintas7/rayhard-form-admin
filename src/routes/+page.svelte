@@ -14,52 +14,52 @@
 
 	// Data pelanggan terbaru
 	let recentCustomers = [
-		{
-			id: 1,
-			name: "Ahmad Rizki",
-			email: "ahmad.rizki@email.com",
-			type: "Umrah",
-			destination: "Makkah & Madinah",
-			status: "Confirmed",
-			date: "2024-01-15"
-		},
-		{
-			id: 2,
-			name: "Siti Nurhaliza",
-			email: "siti.nurhaliza@email.com",
-			type: "Pelancongan",
-			destination: "Turki",
-			status: "Pending",
-			date: "2024-01-14"
-		},
-		{
-			id: 3,
-			name: "Muhammad Fadli",
-			email: "m.fadli@email.com",
-			type: "Umrah",
-			destination: "Makkah & Madinah",
-			status: "Confirmed",
-			date: "2024-01-13"
-		},
-		{
-			id: 4,
-			name: "Dewi Sartika",
-			email: "dewi.sartika@email.com",
-			type: "Pelancongan",
-			destination: "Eropah",
-			status: "Confirmed",
-			date: "2024-01-12"
-		},
-		{
-			id: 5,
-			name: "Budi Santoso",
-			email: "budi.santoso@email.com",
-			type: "Umrah",
-			destination: "Makkah & Madinah",
-			status: "Pending",
-			date: "2024-01-11"
-		}
-	];
+    {
+      id: 1,
+      name: "Ahmad Rizal bin Rahman",
+      email: "ahmad.rizal@email.com",
+      type: "Umrah",
+      destination: "Makkah & Madinah",
+      status: "Confirmed",
+      date: "2025-09-15",
+    },
+    {
+      id: 2,
+      name: "Siti Nurhalizah binti Zulkifli",
+      email: "sitinurhalizah@email.com",
+      type: "Pelancongan",
+      destination: "Turki",
+      status: "Pending",
+      date: "2025-09-14",
+    },
+    {
+      id: 3,
+      name: "Muhammad safe ali bin Azman",
+      email: "muhammad.safe@email.com",
+      type: "Umrah",
+      destination: "Makkah & Madinah",
+      status: "Confirmed",
+      date: "2025-09-13",
+    },
+    {
+      id: 4,
+      name: "Noraini",
+      email: "noraini.abdullah@email.com",
+      type: "Pelancongan",
+      destination: "Eropah",
+      status: "Confirmed",
+      date: "2025-09-12",
+    },
+    {
+      id: 5,
+      name: "safawi Rasid",
+      email: "safawi@email.com",
+      type: "Umrah",
+      destination: "Makkah & Madinah",
+      status: "Pending",
+      date: "2025-09-11",
+    },
+  ];
 
 	// Data destinasi Popular
 	let popularDestinations = [
@@ -311,8 +311,8 @@
 						<thead class="bg-gradient-to-r from-gray-50 to-gray-100">
 							<tr>
 								<th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Pelanggan</th>
-								<th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Tipe</th>
-								<th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Destinasi</th>
+								<th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Pakej</th>
+								<th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Kategori</th>
 								<th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Status</th>
 								<th class="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Tarikh</th>
 							</tr>
