@@ -18,7 +18,7 @@
 	<!-- Sidebar Header -->
 	<div class="flex items-center justify-between h-16 px-6 border-b border-gray-200 bg-gradient-to-r from-[#921E8D] via-[#AC2EAC] to-[#921E8D]">
 		<div class="flex items-center space-x-3">
-			<img src="/src/lib/assets/favicon.svg" alt="Rayhar Travel" class="h-8 w-auto" />
+			<img src="/favicon.svg" alt="Rayhar Travel" class="h-8 w-auto" />
 			{#if !isMobile}
 				<span class="text-white font-bold text-lg">Rayhar Admin</span>
 			{/if}

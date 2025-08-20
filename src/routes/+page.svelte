@@ -118,7 +118,7 @@
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="flex justify-between items-center py-6">
 				<div class="flex items-center space-x-4">
-					<img src="/src/lib/assets/favicon.svg" alt="Rayhar Travel" class="h-14 w-auto" />
+					<img src="/favicon.svg" alt="Rayhar Travel" class="h-14 w-auto" />
 					<div class="hidden sm:block">
 						<h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
 						<p class="text-gray-600 mt-1">Selamat datang di sistem admin</p>
