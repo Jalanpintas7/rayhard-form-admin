@@ -15,6 +15,7 @@
 	export let position = 'bottom'; // 'bottom' | 'top'
 	export let size = 'medium'; // 'small' | 'medium' | 'large'
 	export let variant = 'default'; // 'default' | 'outline' | 'filled'
+	export let id = '';
 
 	// State
 	let isOpen = false;
@@ -117,8 +118,7 @@
 
 <div class="dropdown-container relative" bind:this={dropdownElement} use:clickOutside on:clickOutside={handleClickOutside}>
 	<!-- Trigger Button -->
-	<button
-		type="button"
+	<div
 		class="dropdown-trigger w-full flex items-center justify-between border rounded-lg transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-1 {sizeClasses} {variantClasses}"
 		class:opacity-50={disabled}
 		class:cursor-not-allowed={disabled}
@@ -128,7 +128,9 @@
 		class:border-[#942392]={isOpen}
 		on:click={toggleDropdown}
 		on:keydown={handleKeydown}
-		{disabled}
+		role="button"
+		tabindex="0"
+		{id}
 		aria-haspopup="listbox"
 		aria-expanded={isOpen}
 	>
@@ -143,6 +145,7 @@
 					class="p-1 hover:bg-gray-100 rounded transition-colors duration-150"
 					on:click|stopPropagation={clearSelection}
 					title="Padam pilihan"
+					aria-label="Padam pilihan"
 				>
 					<svg class="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -160,7 +163,7 @@
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
 			</svg>
 		</div>
-	</button>
+	</div>
 
 	<!-- Dropdown Menu -->
 	{#if isOpen}

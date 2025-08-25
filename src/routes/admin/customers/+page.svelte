@@ -230,10 +230,11 @@
 
         <!-- Cawangan -->
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-2"
+          <label for="cawangan-dropdown" class="block text-sm font-medium text-gray-700 mb-2"
             >Cawangan</label
           >
           <Dropdown
+            id="cawangan-dropdown"
             options={cawanganOptions}
             bind:value={selectedCawangan}
             placeholder="Semua Cawangan"
@@ -245,10 +246,11 @@
 
         <!-- Type -->
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-2"
+          <label for="type-dropdown" class="block text-sm font-medium text-gray-700 mb-2"
             >Jenis Pakej</label
           >
           <Dropdown
+            id="type-dropdown"
             options={typeOptions}
             bind:value={selectedType}
             placeholder="Semua Pakej"
@@ -260,10 +262,11 @@
 
         <!-- Status -->
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-2"
+          <label for="status-dropdown" class="block text-sm font-medium text-gray-700 mb-2"
             >Status</label
           >
           <Dropdown
+            id="status-dropdown"
             options={statusOptions}
             bind:value={selectedStatus}
             placeholder="Semua Status"

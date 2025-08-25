@@ -353,8 +353,9 @@
 						</div>
 						
 						<div>
-							<label class="block text-sm font-medium text-gray-700 mb-2">Zon Waktu</label>
+							<label for="timezone-dropdown" class="block text-sm font-medium text-gray-700 mb-2">Zon Waktu</label>
 							<Dropdown
+								id="timezone-dropdown"
 								options={timezoneOptions}
 								bind:value={generalSettings.timezone}
 								placeholder="Pilih zon masa"
@@ -365,8 +366,9 @@
 						</div>
 						
 						<div>
-							<label class="block text-sm font-medium text-gray-700 mb-2">Bahasa</label>
+							<label for="language-dropdown" class="block text-sm font-medium text-gray-700 mb-2">Bahasa</label>
 							<Dropdown
+								id="language-dropdown"
 								options={languageOptions}
 								bind:value={generalSettings.language}
 								placeholder="Pilih bahasa"
@@ -377,8 +379,9 @@
 						</div>
 						
 						<div>
-							<label class="block text-sm font-medium text-gray-700 mb-2">Mata Wang</label>
+							<label for="currency-dropdown" class="block text-sm font-medium text-gray-700 mb-2">Mata Wang</label>
 							<Dropdown
+								id="currency-dropdown"
 								options={currencyOptions}
 								bind:value={generalSettings.currency}
 								placeholder="Pilih mata wang"
@@ -426,22 +429,22 @@
 							<div class="space-y-4">
 								<div class="flex items-center justify-between">
 									<div>
-										<label class="text-sm font-medium text-gray-700">Notifikasi Email</label>
+										<label for="email-notifications" class="text-sm font-medium text-gray-700">Notifikasi Email</label>
 										<p class="text-xs text-gray-500">Terima notifikasi melalui email</p>
 									</div>
 									<label class="relative inline-flex items-center cursor-pointer">
-										<input type="checkbox" bind:checked={notificationSettings.emailNotifications} class="sr-only peer">
+										<input id="email-notifications" type="checkbox" bind:checked={notificationSettings.emailNotifications} class="sr-only peer">
 										<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
 									</label>
 								</div>
 								
 								<div class="flex items-center justify-between">
 									<div>
-										<label class="text-sm font-medium text-gray-700">Notifikasi SMS</label>
+										<label for="sms-notifications" class="text-sm font-medium text-gray-700">Notifikasi SMS</label>
 										<p class="text-xs text-gray-500">Terima notifikasi melalui SMS</p>
 									</div>
 									<label class="relative inline-flex items-center cursor-pointer">
-										<input type="checkbox" bind:checked={notificationSettings.smsNotifications} class="sr-only peer">
+										<input id="sms-notifications" type="checkbox" bind:checked={notificationSettings.smsNotifications} class="sr-only peer">
 										<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
 									</label>
 								</div>
@@ -454,33 +457,33 @@
 							<div class="space-y-4">
 								<div class="flex items-center justify-between">
 									<div>
-										<label class="text-sm font-medium text-gray-700">Tempahan Baru</label>
+										<label for="new-booking-alert" class="text-sm font-medium text-gray-700">Tempahan Baru</label>
 										<p class="text-xs text-gray-500">Notifikasi ketika ada tempahan baharu</p>
 									</div>
 									<label class="relative inline-flex items-center cursor-pointer">
-										<input type="checkbox" bind:checked={notificationSettings.newBookingAlert} class="sr-only peer">
+										<input id="new-booking-alert" type="checkbox" bind:checked={notificationSettings.newBookingAlert} class="sr-only peer">
 										<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
 									</label>
 								</div>
 								
 								<div class="flex items-center justify-between">
 									<div>
-										<label class="text-sm font-medium text-gray-700">Pembayaran</label>
+										<label for="payment-alert" class="text-sm font-medium text-gray-700">Pembayaran</label>
 										<p class="text-xs text-gray-500">Notifikasi untuk transaksi pembayaran</p>
 									</div>
 									<label class="relative inline-flex items-center cursor-pointer">
-										<input type="checkbox" bind:checked={notificationSettings.paymentAlert} class="sr-only peer">
+										<input id="payment-alert" type="checkbox" bind:checked={notificationSettings.paymentAlert} class="sr-only peer">
 										<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
 									</label>
 								</div>
 								
 								<div class="flex items-center justify-between">
 									<div>
-										<label class="text-sm font-medium text-gray-700">Pembatalan</label>
+										<label for="cancellation-alert" class="text-sm font-medium text-gray-700">Pembatalan</label>
 										<p class="text-xs text-gray-500">Notifikasi ketika ada pembatalan</p>
 									</div>
 									<label class="relative inline-flex items-center cursor-pointer">
-										<input type="checkbox" bind:checked={notificationSettings.cancellationAlert} class="sr-only peer">
+										<input id="cancellation-alert" type="checkbox" bind:checked={notificationSettings.cancellationAlert} class="sr-only peer">
 										<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
 									</label>
 								</div>
@@ -493,33 +496,33 @@
 							<div class="space-y-4">
 								<div class="flex items-center justify-between">
 									<div>
-										<label class="text-sm font-medium text-gray-700">Laporan Harian</label>
+										<label for="daily-report" class="text-sm font-medium text-gray-700">Laporan Harian</label>
 										<p class="text-xs text-gray-500">Terima laporan harian via email</p>
 									</div>
 									<label class="relative inline-flex items-center cursor-pointer">
-										<input type="checkbox" bind:checked={notificationSettings.dailyReport} class="sr-only peer">
+										<input id="daily-report" type="checkbox" bind:checked={notificationSettings.dailyReport} class="sr-only peer">
 										<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
 									</label>
 								</div>
 								
 								<div class="flex items-center justify-between">
 									<div>
-										<label class="text-sm font-medium text-gray-700">Laporan Mingguan</label>
+										<label for="weekly-report" class="text-sm font-medium text-gray-700">Laporan Mingguan</label>
 										<p class="text-xs text-gray-500">Terima laporan mingguan via email</p>
 									</div>
 									<label class="relative inline-flex items-center cursor-pointer">
-										<input type="checkbox" bind:checked={notificationSettings.weeklyReport} class="sr-only peer">
+										<input id="weekly-report" type="checkbox" bind:checked={notificationSettings.weeklyReport} class="sr-only peer">
 										<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
 									</label>
 								</div>
 								
 								<div class="flex items-center justify-between">
 									<div>
-										<label class="text-sm font-medium text-gray-700">Laporan Bulanan</label>
+										<label for="monthly-report" class="text-sm font-medium text-gray-700">Laporan Bulanan</label>
 										<p class="text-xs text-gray-500">Terima laporan bulanan via email</p>
 									</div>
 									<label class="relative inline-flex items-center cursor-pointer">
-										<input type="checkbox" bind:checked={notificationSettings.monthlyReport} class="sr-only peer">
+										<input id="monthly-report" type="checkbox" bind:checked={notificationSettings.monthlyReport} class="sr-only peer">
 										<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
 									</label>
 								</div>
@@ -554,29 +557,30 @@
 							<div class="space-y-4">
 								<div class="flex items-center justify-between">
 									<div>
-										<label class="text-sm font-medium text-gray-700">Mod Penyelenggaraan</label>
+										<label for="maintenance-mode" class="text-sm font-medium text-gray-700">Mod Penyelenggaraan</label>
 										<p class="text-xs text-gray-500">Aktifkan untuk menghentikan akses pengguna</p>
 									</div>
 									<label class="relative inline-flex items-center cursor-pointer">
-										<input type="checkbox" bind:checked={systemSettings.maintenanceMode} class="sr-only peer">
+										<input id="maintenance-mode" type="checkbox" bind:checked={systemSettings.maintenanceMode} class="sr-only peer">
 										<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
 									</label>
 								</div>
 								
 								<div class="flex items-center justify-between">
 									<div>
-										<label class="text-sm font-medium text-gray-700">Auto Backup</label>
+										<label for="auto-backup" class="text-sm font-medium text-gray-700">Auto Backup</label>
 										<p class="text-xs text-gray-500">Backup data secara automatik</p>
 									</div>
 									<label class="relative inline-flex items-center cursor-pointer">
-										<input type="checkbox" bind:checked={systemSettings.autoBackup} class="sr-only peer">
+										<input id="auto-backup" type="checkbox" bind:checked={systemSettings.autoBackup} class="sr-only peer">
 										<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
 									</label>
 								</div>
 								
 								<div>
-									<label class="block text-sm font-medium text-gray-700 mb-2">Kekerapan Backup</label>
+									<label for="backup-frequency-dropdown" class="block text-sm font-medium text-gray-700 mb-2">Kekerapan Backup</label>
 									<Dropdown
+										id="backup-frequency-dropdown"
 										options={backupFrequencyOptions}
 										bind:value={systemSettings.backupFrequency}
 										placeholder="Pilih kekerapan sandaran"
@@ -657,8 +661,9 @@
 							<h4 class="text-lg font-semibold text-gray-900 mb-4">Payment Gateway</h4>
 							<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 								<div>
-						<label class="block text-sm font-medium text-gray-700 mb-2">Provider</label>
+						<label for="payment-gateway-dropdown" class="block text-sm font-medium text-gray-700 mb-2">Provider</label>
 						<Dropdown
+							id="payment-gateway-dropdown"
 							options={paymentGatewayOptions}
 							bind:value={integrationSettings.paymentGateway}
 							placeholder="Pilih gateway pembayaran"
@@ -685,11 +690,11 @@
 							<div class="space-y-4">
 								<div class="flex items-center justify-between">
 									<div>
-										<label class="text-sm font-medium text-gray-700">Aktifkan Analytics</label>
+										<label for="analytics-toggle" class="text-sm font-medium text-gray-700">Aktifkan Analytics</label>
 										<p class="text-xs text-gray-500">Kumpul data analytics untuk laporan</p>
 									</div>
 									<label class="relative inline-flex items-center cursor-pointer">
-										<input type="checkbox" bind:checked={integrationSettings.analytics} class="sr-only peer">
+										<input id="analytics-toggle" type="checkbox" bind:checked={integrationSettings.analytics} class="sr-only peer">
 										<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
 									</label>
 								</div>

@@ -215,8 +215,9 @@
 					/>
 				</div>
 				<div>
-					<label class="block text-sm font-medium text-gray-700 mb-1">Cawangan</label>
+					<label for="cawangan-dropdown" class="block text-sm font-medium text-gray-700 mb-1">Cawangan</label>
 					<Dropdown
+						id="cawangan-dropdown"
 						options={[
 							{value: '', label: 'Semua Cawangan'},
 							{value: 'Kuala Lumpur', label: 'Kuala Lumpur'},
@@ -238,8 +239,9 @@
 					/>
 				</div>
 				<div>
-					<label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+					<label for="status-dropdown" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
 					<Dropdown
+						id="status-dropdown"
 						options={[
 							{value: '', label: 'Semua Status'},
 							{value: 'Active', label: 'Active'},

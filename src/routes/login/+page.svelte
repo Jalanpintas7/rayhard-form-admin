@@ -149,9 +149,9 @@
 						/>
 						<span class="ml-2 text-sm text-gray-600">Ingat saya</span>
 					</label>
-					<a href="#" class="text-sm text-primary-600 hover:text-primary-700 font-medium transition-colors">
+					<button type="button" class="text-sm text-primary-600 hover:text-primary-700 font-medium transition-colors">
 						Lupa kata laluan?
-					</a>
+					</button>
 				</div>
 				
 				<!-- Error Message -->
@@ -203,11 +203,6 @@
 </LoginGuard>
 
 <style>
-	/* Animation untuk card */
-	.card-primary {
-		animation: slideUp 0.6s ease-out;
-	}
-	
 	@keyframes slideUp {
 		from {
 			opacity: 0;
@@ -217,11 +212,5 @@
 			opacity: 1;
 			transform: translateY(0);
 		}
-	}
-	
-	/* Hover effects */
-	.card-primary:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 20px 40px rgba(16, 24, 40, 0.12);
 	}
 </style>

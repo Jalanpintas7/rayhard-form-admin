@@ -33,6 +33,7 @@
 							on:click={action.onClick}
 							class="p-2 text-gray-400 hover:text-gray-600 transition-colors"
 							title={action.title}
+							aria-label={action.title}
 						>
 							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={action.icon}></path>
