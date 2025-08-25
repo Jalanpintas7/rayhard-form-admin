@@ -1,207 +1,193 @@
-# Rayhar Travel Admin Panel
+# Rayhar Travel Admin Dashboard
 
-Panel admin yang responsif untuk Rayhar Travel dengan komponen-komponen yang dapat digunakan kembali.
+## Gambaran Umum
+Sistem admin dashboard untuk Rayhar Travel yang menyediakan pengurusan pelanggan, destinasi, dan statistik perjalanan Umrah dan Pelancongan.
 
-## 🚀 Fitur
+## Struktur Routing
 
-- **Responsif**: Didesain untuk desktop, tablet, dan mobile
-- **Komponen Modular**: Koleksi komponen yang dapat digunakan kembali
-- **Modern UI**: Menggunakan Tailwind CSS dengan custom design system
-- **SvelteKit**: Dibangun dengan SvelteKit untuk performa optimal
-- **TypeScript Ready**: Siap untuk implementasi TypeScript
+### 📊 Halaman Utama (Dashboard)
+- **Route**: `/` (root)
+- **File**: `src/routes/+page.svelte`
+- **Fungsi**: Halaman dashboard utama dengan statistik dan data
+- **Fitur**: Statistik, grafik, tabel pelanggan, dan navigasi ke admin panel
 
-## 📱 Responsivitas
+### 🔐 Halaman Login
+- **Route**: `/login`
+- **File**: `src/routes/login/+page.svelte`
+- **Fungsi**: Halaman login yang terpisah
+- **Fitur**: Form login dengan validasi, loading state, dan redirect otomatis
 
-Aplikasi ini responsif dengan breakpoint berikut:
-- **Mobile**: < 768px
-- **Tablet**: 768px - 1024px  
-- **Desktop**: > 1024px
+### 📊 Dashboard Detail
+- **Route**: `/dashboard`
+- **File**: `src/routes/dashboard/+page.svelte`
+- **Fungsi**: Halaman dashboard yang sama dengan halaman utama
+- **Fitur**: Statistik, grafik, tabel pelanggan, dan navigasi ke admin panel
 
-## 🎨 Design System
+### ⚙️ Admin Panel
+- **Route**: `/admin/*`
+- **File**: `src/routes/admin/+layout.svelte` dan sub-routes
+- **Fungsi**: Panel admin dengan sidebar navigation
+- **Fitur**: Pengurusan pelanggan, destinasi, musim, dan pengaturan
 
-### Warna Utama
-- **Primary**: `#8E2168` (Ungu)
-- **Secondary**: `#462365` (Ungu Gelap)
-- **Accent**: `#E3BE1D` (Kuning)
+## Alur Penggunaan
 
-### Komponen yang Tersedia
+1. **Pengguna membuka website** → Langsung ke halaman dashboard (`/`)
+2. **Akses login** → Klik "Log Masuk" untuk ke halaman login (`/login`)
+3. **Login berhasil** → Redirect otomatis ke dashboard (`/dashboard`)
+4. **Akses admin panel** → Klik "Admin Panel" dari dashboard
+5. **Logout** → Kembali ke halaman dashboard utama
 
-#### Layout Components
-- `Navbar.svelte` - Navbar responsif untuk mobile
-- `Sidebar.svelte` - Sidebar dengan navigasi lengkap
+## Fitur Login
 
-#### Dashboard Components
-- `PageHeader.svelte` - Header halaman dengan title dan subtitle
-- `StatCard.svelte` - Card untuk menampilkan statistik
-- `ChartCard.svelte` - Card untuk menampilkan grafik
-- `DestinationCard.svelte` - Card untuk daftar destinasi
-- `CustomerTable.svelte` - Tabel responsif untuk data pelanggan
+### 🔐 Keamanan
+- Validasi email format
+- Password visibility toggle
+- Loading state dengan spinner
+- Error handling yang informatif
+- Success feedback sebelum redirect
 
-#### Form Components
-- `FormCard.svelte` - Card untuk form dengan title
-- `Button.svelte` - Button dengan berbagai variant
-- `Input.svelte` - Input field dengan label dan error handling
+### 🎨 Antarmuka
+- Design yang modern dan responsif
+- Tema warna Rayhar Travel
+- Animasi slide-up dan hover effects
+- Auto-focus pada input email
 
-#### UI Components
-- `DataCard.svelte` - Card untuk menampilkan data dengan actions
-- `Badge.svelte` - Badge untuk status atau label
-
-## 🛠️ Instalasi
-
-```bash
-# Clone repository
-git clone <repository-url>
-cd admin-rayhar
-
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-
-# Build for production
-npm run build
-```
-
-## 📁 Struktur Komponen
-
-```
-src/lib/components/
-├── index.js                 # Export semua komponen
-├── README.md               # Dokumentasi komponen
-├── Navbar.svelte           # Navbar responsif
-├── Sidebar.svelte          # Sidebar navigasi
-├── PageHeader.svelte       # Header halaman
-├── StatCard.svelte         # Card statistik
-├── ChartCard.svelte        # Card grafik
-├── DestinationCard.svelte  # Card destinasi
-├── CustomerTable.svelte    # Tabel pelanggan
-├── FormCard.svelte         # Card form
-├── Button.svelte           # Komponen button
-├── Input.svelte            # Komponen input
-├── DataCard.svelte         # Card data
-└── Badge.svelte            # Komponen badge
-```
-
-## 🔧 Penggunaan Komponen
-
-### Import Komponen
-```javascript
-import { 
-  Navbar, 
-  Sidebar, 
-  StatCard, 
-  ChartCard, 
-  Button, 
-  Input,
-  Badge 
-} from '$lib/components';
-```
-
-### Contoh Penggunaan
-```svelte
-<script>
-  import { StatCard, Button, Badge } from '$lib/components';
-  
-  let stats = {
-    totalCustomers: 1247,
-    growthRate: 12.5
-  };
-</script>
-
-<StatCard 
-  title="Total Pelanggan"
-  value={stats.totalCustomers}
-  growth={stats.growthRate}
-  growthText="dari bulan lalu"
-  icon="users"
-/>
-
-<Button variant="primary" size="lg">
-  Tambah Data
-</Button>
-
-<Badge variant="success">Aktif</Badge>
-```
-
-## 📱 Responsive Features
-
-### Mobile-First Design
-- Sidebar otomatis tersembunyi di mobile
-- Tabel berubah menjadi card layout di mobile
-- Grid layout menyesuaikan ukuran layar
+### 📱 Responsivitas
+- Mobile-first design
+- Breakpoint yang optimal
 - Touch-friendly interface
 
-### Breakpoint System
-```css
-/* Mobile */
-@media (max-width: 767px) { ... }
+## Kredensial Demo
 
-/* Tablet */
-@media (min-width: 768px) and (max-width: 1023px) { ... }
-
-/* Desktop */
-@media (min-width: 1024px) { ... }
+```
+Email: admin@rayhar.com
+Password: admin123
 ```
 
-## 🎯 Best Practices
+## Teknologi
 
-### Penggunaan Komponen
-1. **Gunakan komponen yang sudah ada** sebelum membuat yang baru
-2. **Ikuti naming convention** yang konsisten
-3. **Gunakan props yang tersedia** untuk kustomisasi
-4. **Test responsivitas** di berbagai ukuran layar
+- **Framework**: SvelteKit
+- **Styling**: Tailwind CSS
+- **Icons**: Custom icon system
+- **Routing**: File-based routing SvelteKit
 
-### Styling
-1. **Gunakan utility classes** Tailwind CSS
-2. **Ikuti design system** yang sudah ditetapkan
-3. **Gunakan custom CSS** hanya jika diperlukan
-4. **Test di berbagai browser** dan device
+## Struktur File
 
-## 🔄 State Management
+```
+src/routes/
+├── +page.svelte              # Halaman dashboard utama (root)
+├── +layout.svelte            # Layout utama
+├── login/                    # Halaman login
+│   ├── +page.svelte         # Form login
+│   └── +layout.svelte       # Layout login
+├── dashboard/                # Dashboard detail
+│   ├── +page.svelte         # Dashboard (sama dengan root)
+│   └── +layout.svelte       # Layout dashboard
+├── admin/                    # Admin panel routes
+│   ├── +layout.svelte       # Layout admin dengan sidebar
+│   ├── +page.svelte         # Admin overview
+│   ├── customers/           # Pengurusan pelanggan
+│   ├── destinations/        # Pengurusan destinasi
+│   ├── seasons/             # Pengurusan musim
+│   └── settings/            # Pengaturan sistem
+└── lib/
+    ├── components/           # Komponen UI
+    ├── icons.svelte         # Sistem icon
+    └── utils/               # Utility functions
+```
 
-Komponen menggunakan Svelte's reactive system:
-- **Props**: Untuk data yang diterima dari parent
-- **Events**: Untuk komunikasi ke parent component
-- **Reactive statements**: Untuk computed values
+## Fitur Dashboard
 
-## 📊 Performance
+### 📊 Statistik
+- Total pelanggan
+- Pelanggan Umrah vs Pelancongan
+- Destinasi aktif
+- Trend pertumbuhan
 
-- **Lazy loading** untuk komponen besar
-- **Optimized images** dan assets
-- **Minimal bundle size** dengan tree shaking
-- **Efficient re-renders** dengan Svelte reactivity
+### 📈 Grafik & Visualisasi
+- Top Sales Consultant
+- Destinasi popular
+- Trend bulanan
 
-## 🧪 Testing
+### 📋 Tabel Data
+- Pelanggan terbaru
+- Status booking
+- Informasi pakej
 
+## Keamanan
+
+- **Authentication**: Login required untuk dashboard
+- **Session Management**: Redirect otomatis setelah login
+- **Input Validation**: Validasi form yang ketat
+- **Error Handling**: Pesan error yang aman
+
+## Responsivitas
+
+- **Mobile**: 320px - 768px
+- **Tablet**: 768px - 1024px  
+- **Desktop**: 1024px+
+
+## Customization
+
+### Warna Tema
+- **Primary**: `#921E8D` (Ungu)
+- **Secondary**: `#FFF00C` (Kuning)
+- **Accent**: `#AC2EAC` (Ungu Muda)
+
+### Komponen
+- Custom button styles
+- Card components dengan shadow
+- Statistik cards dengan border
+- Responsive grid layouts
+
+## Development
+
+### Setup
 ```bash
-# Run tests
-npm run test
-
-# Run tests with coverage
-npm run test:coverage
+npm install
+npm run dev
 ```
 
-## 📝 Dokumentasi
+### Build
+```bash
+npm run build
+npm run preview
+```
 
-- [Komponen Documentation](./src/lib/components/README.md)
-- [API Documentation](./docs/api.md)
-- [Styling Guide](./docs/styling.md)
+## Deployment
 
-## 🤝 Contributing
+- **Platform**: Vercel, Netlify, atau hosting static
+- **Build Command**: `npm run build`
+- **Output Directory**: `build/`
+- **Environment**: Node.js 18+
+
+## Roadmap
+
+### Fitur Masa Depan
+- [ ] Two-factor authentication (2FA)
+- [ ] Real-time notifications
+- [ ] Advanced analytics dashboard
+- [ ] Multi-language support
+- [ ] Dark mode theme
+
+### Peningkatan
+- [ ] Progressive Web App (PWA)
+- [ ] Offline capability
+- [ ] Advanced search & filtering
+- [ ] Export data functionality
+
+## Kontribusi
 
 1. Fork repository
-2. Buat feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push ke branch (`git push origin feature/AmazingFeature`)
+2. Buat feature branch
+3. Commit changes
+4. Push ke branch
 5. Buat Pull Request
 
-## 📄 License
+## Lisensi
 
-Distributed under the MIT License. See `LICENSE` for more information.
+© 2024 Rayhar Travel. Hak cipta terpelihara.
 
-## 📞 Support
+---
 
-Untuk dukungan teknis, silakan hubungi:
-- Email: support@rayhar.com
-- WhatsApp: +60 12-345 6789
+**Nota**: Sistem ini direka untuk pengurusan agensi travel dengan fokus pada pakej Umrah dan Pelancongan. Semua data adalah demo dan tidak mewakili data sebenar.

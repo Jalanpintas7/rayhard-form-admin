@@ -13,7 +13,7 @@
 	}
 </script>
 
-<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+<div class="card-primary">
 	<div class="p-6">
 		<div class="flex items-center justify-between mb-6">
 			<div>

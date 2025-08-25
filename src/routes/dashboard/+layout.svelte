@@ -1,8 +1,8 @@
 <script>
-	import Sidebar from '$lib/components/Sidebar.svelte';
+	import '../../app.css';
 	import BackButtonGuard from '$lib/components/BackButtonGuard.svelte';
 	import { onMount } from 'svelte';
-	import { isAuthenticated, checkAuthStatus } from '$lib/stores/auth.js';
+	import { checkAuthStatus } from '$lib/stores/auth.js';
 	import { goto } from '$app/navigation';
 	
 	let isLoading = true;
@@ -19,38 +19,30 @@
 				return;
 			}
 			
-			// Check role untuk memastikan user adalah super admin
-			const userRole = localStorage.getItem('userRole');
-			if (userRole !== 'super_admin') {
-				// Redirect ke dashboard jika bukan super admin
-				goto('/dashboard');
-				return;
-			}
-			
 			hasCheckedAuth = true;
 			isLoading = false;
 		} catch (error) {
-			console.error('Error in admin layout:', error);
+			console.error('Error in dashboard layout:', error);
 			// Fallback ke login jika ada error
 			goto('/login');
 		}
 	});
 </script>
 
+<svelte:head>
+	<title>Dashboard - Rayhar Travel Admin</title>
+	<link rel="icon" href="/favicon.svg" />
+</svelte:head>
+
 {#if isLoading || !hasCheckedAuth}
 	<div class="min-h-screen bg-gray-50 flex items-center justify-center">
 		<div class="text-center">
 			<div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
-			<p class="text-gray-600">Memeriksa akses admin...</p>
+			<p class="text-gray-600">Memeriksa autentikasi...</p>
 		</div>
 	</div>
 {:else}
 	<BackButtonGuard>
-		<div class="flex h-screen bg-gray-100">
-			<Sidebar />
-			<main class="flex-1 overflow-auto">
-				<slot />
-			</main>
-		</div>
+		<slot />
 	</BackButtonGuard>
 {/if}

@@ -271,7 +271,7 @@
 	</div>
 
 	<!-- Tabs -->
-	<div class="bg-white rounded-xl shadow-sm border border-gray-100 mb-6">
+	<div class="card-primary mb-6">
 		<div class="border-b border-gray-200">
 			<nav class="flex space-x-8 px-6" aria-label="Tabs">
 				<button 
@@ -311,7 +311,7 @@
 	<!-- Tab Content -->
 	{#if activeTab === 'general'}
 		<!-- General Settings -->
-		<div class="bg-white rounded-xl shadow-sm border border-gray-100">
+		<div class="card-primary">
 			<div class="p-6">
 				<div class="flex items-center justify-between mb-6">
 					<div>
@@ -409,7 +409,7 @@
 		</div>
 	{:else if activeTab === 'notifications'}
 		<!-- Notification Settings -->
-		<div class="bg-white rounded-xl shadow-sm border border-gray-100">
+		<div class="card-primary">
 			<div class="p-6">
 				<div class="flex items-center justify-between mb-6">
 					<div>
@@ -537,7 +537,7 @@
 		</div>
 	{:else if activeTab === 'system'}
 		<!-- System Settings -->
-		<div class="bg-white rounded-xl shadow-sm border border-gray-100">
+		<div class="card-primary">
 			<div class="p-6">
 				<div class="flex items-center justify-between mb-6">
 					<div>
@@ -641,7 +641,7 @@
 		</div>
 	{:else if activeTab === 'integrations'}
 		<!-- Integration Settings -->
-		<div class="bg-white rounded-xl shadow-sm border border-gray-100">
+		<div class="card-primary">
 			<div class="p-6">
 				<div class="flex items-center justify-between mb-6">
 					<div>
@@ -731,7 +731,7 @@
 		</div>
 	{:else if activeTab === 'status'}
 		<!-- Status Management -->
-		<div class="bg-white rounded-xl shadow-sm border border-gray-100">
+		<div class="card-primary">
 			<div class="p-6">
 				<div class="flex items-center justify-between mb-6">
 					<div>

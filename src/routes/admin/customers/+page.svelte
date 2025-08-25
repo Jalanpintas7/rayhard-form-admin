@@ -190,7 +190,7 @@
   </div>
 
   <!-- Filters -->
-  <div class="bg-white rounded-xl shadow-sm border border-gray-100 mb-6">
+  <div class="card-primary mb-6">
     <div class="p-6">
       <div class="flex items-center justify-between mb-4">
         <h3 class="text-lg font-semibold text-gray-900">Filter</h3>
@@ -306,9 +306,7 @@
   </div>
 
   <!-- Customer Table -->
-  <div
-    class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden"
-  >
+  <div class="card-primary">
     <div class="p-6">
       <div class="flex items-center justify-between mb-6">
         <h3 class="text-xl font-bold text-gray-900">Senarai Pelanggan</h3>

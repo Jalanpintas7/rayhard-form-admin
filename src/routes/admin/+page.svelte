@@ -4,6 +4,10 @@
   import ChartCard from "../../lib/components/ChartCard.svelte";
   import DestinationCard from "../../lib/components/DestinationCard.svelte";
   import CustomerTable from "../../lib/components/CustomerTable.svelte";
+  import TopSalesCard from "../../lib/components/TopSalesCard.svelte";
+  import TopSalesTable from "../../lib/components/TopSalesTable.svelte";
+  import Icon from "../../lib/icons.svelte";
+  import AuthGuard from "../../lib/components/AuthGuard.svelte";
 
   // Data statistik
   let stats = {
@@ -78,6 +82,15 @@
     { name: "Singapura", customers: 34, percentage: 2.7, type: "Pelancongan" },
   ];
 
+  // Data Top Sales
+  let topSales = [
+    { name: "Makkah & Madinah", sales: 892, revenue: 2676000, type: "Umrah", growth: "+15.2%" },
+    { name: "Turki", sales: 156, revenue: 468000, type: "Pelancongan", growth: "+8.7%" },
+    { name: "Eropah", sales: 98, revenue: 294000, type: "Pelancongan", growth: "+12.3%" },
+    { name: "Jepun", sales: 67, revenue: 201000, type: "Pelancongan", growth: "+5.9%" },
+    { name: "Singapura", sales: 34, revenue: 68000, type: "Pelancongan", growth: "+3.2%" }
+  ];
+
   // Data tren bulanan
   let monthlyTrends = [
     { month: "Jan", umrah: 45, Pelancongan: 40 },
@@ -99,13 +112,23 @@
     { label: "Umrah", color: "bg-primary-600" },
     { label: "Pelancongan", color: "bg-secondary-500" },
   ];
+
+  function formatCurrency(amount) {
+    return new Intl.NumberFormat('ms-MY', {
+      style: 'currency',
+      currency: 'MYR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(amount);
+  }
 </script>
 
 <svelte:head>
   <title>Admin Dashboard - Rayhar Travel</title>
 </svelte:head>
 
-<div>
+<AuthGuard>
+  <div>
   <!-- Page Header -->
   <PageHeader
     title="Dashboard"
@@ -167,18 +190,17 @@
 
   <!-- Charts dan Data -->
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-6 sm:mb-8">
-    <!-- Grafik Tren Bulanan -->
-    <ChartCard
-      title="Tren Bulanan"
-      legend={chartLegend}
-      data={monthlyTrends}
-      type="bar"
-    />
+    <!-- Grafik Top Sales -->
+    <TopSalesCard {topSales} />
 
     <!-- Destinasi Popular -->
     <DestinationCard destinations={popularDestinations} />
   </div>
 
+  <!-- Top Sales List -->
+  <TopSalesTable {topSales} />
+
   <!-- Tabel Pelanggan Terbaru -->
   <CustomerTable customers={recentCustomers} />
-</div>
+  </div>
+</AuthGuard>
